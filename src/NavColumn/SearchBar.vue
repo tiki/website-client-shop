@@ -18,7 +18,8 @@ input {
   border-radius: 0.5em;
   border: 0.15em solid rgba(0, 0, 0, 0.6);
   background: url('src/assets/searchBarSuffix.svg') no-repeat scroll 170px 7px;
-  margin-top: 3em;
+  margin-top: 2em;
+  margin-bottom: 0.5em;
 }
 
 input::placeholder {

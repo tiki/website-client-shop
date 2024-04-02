@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { type PropType } from 'vue'
+import { type PropType, ref } from 'vue'
 
 interface navSection {
   title: string
@@ -9,16 +9,27 @@ interface navSection {
 defineProps({
   navSection: {
     required: true,
-    type: Object as PropType<navSection>
+    type: Object as PropType<navSection[]>
   }
 })
+
+const selectedRoute = ref<string>()
 </script>
 
 <template>
-  <p>{{ navSection.title }}</p>
-  <ul>
-    <li v-for="route in navSection.navList" :key="route">{{ route }}</li>
-  </ul>
+  <div v-for="section in navSection">
+    <p>{{ section.title }}</p>
+    <ul>
+      <li
+        v-for="route in section.navList"
+        :key="route"
+        @click="selectedRoute = route"
+        :class="route === selectedRoute ? 'selected-route' : ''"
+      >
+        {{ route }}
+      </li>
+    </ul>
+  </div>
 </template>
 
 <style scoped>
@@ -36,7 +47,8 @@ li {
   font-size: 14px;
 }
 
-li:hover {
+li:hover,
+.selected-route {
   color: #00b272;
   background-color: #00b27210;
   border-radius: 0.5em;

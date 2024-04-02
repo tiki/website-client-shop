@@ -16,7 +16,7 @@ const contentSection = [
     title: 'DATA ACCESS',
     navList: [
       'Playground',
-      'AWS Athen',
+      'AWS Athena',
       'Snowflake',
       'Apache Airflow',
       'Google BigQuery',
@@ -31,7 +31,7 @@ const contentSection = [
   <div class="nav-column-container">
     <logo-img />
     <search-bar />
-    <nav-section v-for="section in contentSection" :nav-section="section" />
+    <nav-section :nav-section="contentSection" />
   </div>
 </template>
 
@@ -42,7 +42,7 @@ const contentSection = [
   display: flex;
   flex-direction: column;
   width: 20%;
-  justify-content: center;
+  margin-top: 2em;
   padding: 0 2em;
 }
 </style>
