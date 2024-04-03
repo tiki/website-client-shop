@@ -1,15 +1,18 @@
 <script setup lang="ts">
 import NavigationColumn from '../NavColumn/NavigationColumn.vue'
 import ContentColumn from '../ContentColumn/ContentColumn.vue'
+import { ref } from 'vue'
+
+const route = ref<string>()
 </script>
 
 <template>
   <div class="container">
     <!-- first column  -->
-    <navigation-column />
+    <navigation-column @route="(routeName: string) => (route = routeName)" />
 
     <!-- second column -->
-    <content-column />
+    <content-column> You are in the route: {{ route }}</content-column>
 
     <!-- third column -->
   </div>

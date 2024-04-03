@@ -1,9 +1,23 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+defineProps({
+  title: {
+    type: String,
+    required: true
+  },
+  subtitle: {
+    type: String,
+    required: true
+  }
+})
+</script>
 
 <template>
   <div class="container">
-    <h1>Title</h1>
-    <h2>Subtitle</h2>
+    <h1>{{ title }}</h1>
+    <h2>
+      {{ subtitle }}
+    </h2>
+    <hr />
   </div>
 </template>
 
@@ -11,5 +25,23 @@
 .container {
   display: flex;
   flex-direction: column;
+}
+
+h1 {
+  color: #1c0000;
+  font-weight: 600;
+}
+
+h2 {
+  color: #505c59;
+  font-size: 15px;
+  font-weight: 300;
+  margin-top: 0.5em;
+  line-height: 1.3em;
+}
+
+hr {
+  margin-top: 1.5em;
+  border-top: 1px solid #00000010;
 }
 </style>

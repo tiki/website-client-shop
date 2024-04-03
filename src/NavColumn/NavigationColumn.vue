@@ -29,7 +29,7 @@ const contentSection = [
 <template>
   <div class="nav-column-container">
     <nav-header />
-    <nav-section :nav-section="contentSection" />
+    <nav-section :nav-section="contentSection" @route="(route: string) => $emit('route', route)" />
   </div>
 </template>
 

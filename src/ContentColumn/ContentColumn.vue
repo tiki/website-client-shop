@@ -3,7 +3,32 @@ import ContentHeader from './ContentHeader.vue'
 </script>
 
 <template>
-  <content-header />
+  <div class="content-column-container">
+    <content-header
+      :title="'Dataset: Transactions'"
+      :subtitle="`This dataset contains purchase transaction information like the date, amount, merchant, type,
+      and location. Combine with demographics to build profiles against spend. See Taxonomy for all
+      available fields. Each record contains a standard userid which can be used to join
+      demographics to various other datasets, such as receipts and demographics.`"
+    />
+    <div class="slot-container">
+      <slot />
+    </div>
+  </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.content-column-container {
+  height: 100vh;
+  border-right: 1px solid #00000010;
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  margin-top: 5em;
+  padding: 0 3em;
+}
+
+.slot-container {
+  margin-top: 2em;
+}
+</style>
