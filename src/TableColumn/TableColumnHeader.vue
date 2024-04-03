@@ -1,12 +1,15 @@
-<script
-  setup
-  lang="ts
-"
-></script>
+<script setup lang="ts">
+const props = defineProps({
+  table: {
+    type: String,
+    required: true
+  }
+})
+</script>
 
 <template>
   <h1>TABLE</h1>
-  <div class="table-name">tiki.transactions</div>
+  <div class="table-name">tiki.{{ table.toLowerCase() }}</div>
 </template>
 
 <style scoped>

@@ -12,7 +12,7 @@ defineProps({
 
 <template>
   <div class="table-column-container">
-    <table-column-header />
+    <table-column-header :table="table" />
     <table-taxonomy :table="table" />
   </div>
 </template>
