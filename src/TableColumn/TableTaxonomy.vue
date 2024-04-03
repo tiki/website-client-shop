@@ -1,8 +1,15 @@
 <script setup lang="ts">
 import { demographics, transactions, receipts } from './Tables'
 
-const checkTable = (table: string) => {
-  switch (table) {
+const props = defineProps({
+  table: {
+    type: String,
+    required: true
+  }
+})
+
+const checkTable = () => {
+  switch (props.table.toLowerCase()) {
     case 'demographics':
       return demographics
     case 'receipts':

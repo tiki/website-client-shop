@@ -17,7 +17,7 @@ const route = ref<string>()
 
     <!-- third column -->
 
-    <table-column />
+    <table-column :table="route" />
   </div>
 </template>
 
