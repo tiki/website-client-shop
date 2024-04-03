@@ -42,7 +42,7 @@ const handleRouting = (route: string) => {
 <style scoped>
 p {
   font-weight: bold;
-  font-size: 14px;
+  font-size: 0.9em;
   margin-top: 2em;
 }
 
@@ -51,7 +51,7 @@ li {
   padding: 0.3em 0 0.3em 1em;
   margin: 0.75em 0;
   cursor: pointer;
-  font-size: 14px;
+  font-size: 0.9em;
 }
 
 li:hover,

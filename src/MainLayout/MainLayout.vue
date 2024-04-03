@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import NavigationColumn from '../NavColumn/NavigationColumn.vue'
 import ContentColumn from '../ContentColumn/ContentColumn.vue'
+import TableColumn from '../TableColumn/TableColumn.vue'
 import { ref } from 'vue'
 
 const route = ref<string>()
@@ -15,6 +16,8 @@ const route = ref<string>()
     <content-column> You are in the route: {{ route }}</content-column>
 
     <!-- third column -->
+
+    <table-column />
   </div>
 </template>
 

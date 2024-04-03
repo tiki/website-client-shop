@@ -34,7 +34,7 @@ h1 {
 
 h2 {
   color: #505c59;
-  font-size: 15px;
+  font-size: 1em;
   font-weight: 300;
   margin-top: 0.5em;
   line-height: 1.3em;
