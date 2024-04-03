@@ -1,14 +1,22 @@
 <script setup lang="ts">
 import NavigationColumn from '../NavColumn/NavigationColumn.vue'
+import ContentColumn from '../ContentColumn/ContentColumn.vue'
 </script>
 
 <template>
-  <!-- first column  -->
-  <navigation-column />
+  <div class="container">
+    <!-- first column  -->
+    <navigation-column />
 
-  <!-- second column -->
+    <!-- second column -->
+    <content-column />
 
-  <!-- third column -->
+    <!-- third column -->
+  </div>
 </template>
 
-<style></style>
+<style scoped>
+.container {
+  display: flex;
+}
+</style>

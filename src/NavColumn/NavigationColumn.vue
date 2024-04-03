@@ -1,7 +1,6 @@
 <script setup lang="ts">
-import LogoImg from './LogoImg.vue'
-import SearchBar from './SearchBar.vue'
 import NavSection from './NavSection.vue'
+import NavHeader from './NavHeader.vue'
 
 const contentSection = [
   {
@@ -29,8 +28,7 @@ const contentSection = [
 
 <template>
   <div class="nav-column-container">
-    <logo-img />
-    <search-bar />
+    <nav-header />
     <nav-section :nav-section="contentSection" />
   </div>
 </template>
