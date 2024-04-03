@@ -4,7 +4,7 @@ import ContentColumn from '../ContentColumn/ContentColumn.vue'
 import TableColumn from '../TableColumn/TableColumn.vue'
 import { ref } from 'vue'
 
-const route = ref<string>()
+const route = ref<string>('')
 </script>
 
 <template>

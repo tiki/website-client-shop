@@ -9,7 +9,7 @@ const props = defineProps({
 })
 
 const checkTable = () => {
-  switch (props.table.toLowerCase()) {
+  switch (props.table!.toLowerCase()) {
     case 'demographics':
       return demographics
     case 'receipts':
@@ -24,7 +24,7 @@ const checkTable = () => {
   <div class="table-taxonomy-container">
     <h2>TAXONOMY</h2>
     <ul>
-      <li v-for="data of checkTable('demographics')" :key="data.data">
+      <li v-for="data of checkTable()" :key="data.data">
         <div class="table-cell-container">
           <span class="table-cell-type">
             {{ data.data }}
