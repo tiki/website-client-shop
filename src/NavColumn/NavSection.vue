@@ -13,7 +13,14 @@ defineProps({
   }
 })
 
+const emits = defineEmits(['route'])
+
 const selectedRoute = ref<string>()
+
+const handleRouting = (route: string) => {
+  selectedRoute.value = route
+  emits('route', route)
+}
 </script>
 
 <template>
@@ -23,7 +30,7 @@ const selectedRoute = ref<string>()
       <li
         v-for="route in section.navList"
         :key="route"
-        @click="selectedRoute = route"
+        @click="handleRouting(route)"
         :class="route === selectedRoute ? 'selected-route' : ''"
       >
         {{ route }}
@@ -35,7 +42,7 @@ const selectedRoute = ref<string>()
 <style scoped>
 p {
   font-weight: bold;
-  font-size: 14px;
+  font-size: 0.9em;
   margin-top: 2em;
 }
 
@@ -44,7 +51,7 @@ li {
   padding: 0.3em 0 0.3em 1em;
   margin: 0.75em 0;
   cursor: pointer;
-  font-size: 14px;
+  font-size: 0.9em;
 }
 
 li:hover,
