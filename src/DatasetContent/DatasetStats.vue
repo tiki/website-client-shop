@@ -17,8 +17,8 @@ defineProps({
       <span>CONTAINS</span>
       <div class="tags-list">
         <div class="contain-item">Card Transactions</div>
-        <div class="contain-item">in-store purcahses</div>
-        <div class="contain-item">ecommerce purcahses</div>
+        <div class="contain-item">in-store purchases</div>
+        <div class="contain-item">ecommerce purchases</div>
         <div class="contain-item">sku-level receipts</div>
       </div>
     </div>
@@ -26,8 +26,8 @@ defineProps({
       <span>APPROVED FOR</span>
       <div class="tags-list">
         <div class="contain-item">Card Transactions</div>
-        <div class="contain-item">in-store purcahses</div>
-        <div class="contain-item">ecommerce purcahses</div>
+        <div class="contain-item">in-store purchases</div>
+        <div class="contain-item">ecommerce purchases</div>
         <div class="contain-item">sku-level receipts</div>
       </div>
     </div>
