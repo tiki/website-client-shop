@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { type PropType, ref } from 'vue'
 import { type Route } from './types/route'
+import type { selectedRoute } from './types/selectedRoute'
 
 defineProps({
   navSection: {
@@ -11,11 +12,14 @@ defineProps({
 
 const emits = defineEmits(['route'])
 
-const selectedRoute = ref<string>()
+const selectedRoute = ref<selectedRoute>()
 
-const handleRouting = (route: string) => {
-  selectedRoute.value = route
-  emits('route', route)
+const handleRouting = (route: string, title: string) => {
+  selectedRoute.value = {
+    title,
+    route
+  }
+  emits('route', selectedRoute.value)
 }
 </script>
 
@@ -26,8 +30,8 @@ const handleRouting = (route: string) => {
       <li
         v-for="route in section.navList"
         :key="route"
-        @click="handleRouting(route)"
-        :class="route === selectedRoute ? 'selected-route' : ''"
+        @click="handleRouting(route, section.title)"
+        :class="route === selectedRoute?.route ? 'selected-route' : ''"
       >
         {{ route }}
       </li>

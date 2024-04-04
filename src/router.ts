@@ -1,3 +1,5 @@
+import type { selectedRoute } from './NavColumn/types/selectedRoute'
+
 export default class Router {
   private static instance: Router
 
@@ -23,6 +25,13 @@ export default class Router {
       Router.instance = new Router()
     }
     return Router.instance
+  }
+
+  public static getInitialRoute(): selectedRoute {
+    return {
+      title: 'MY ACCOUNT',
+      route: 'Access Keys'
+    }
   }
 
   public static getRoutes(datasetsRoutes: string[]) {
