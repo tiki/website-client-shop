@@ -49,6 +49,7 @@ defineProps({
 
 .tags-list {
   display: flex;
+  flex-flow: wrap;
   gap: 0.5em;
 }
 
@@ -57,6 +58,8 @@ defineProps({
 }
 
 .contain-item {
+  display: flex;
+  align-items: center;
   font-size: 0.85em;
   text-align: center;
   border: 1px solid #00000020;
