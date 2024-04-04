@@ -4,6 +4,7 @@ import ContentColumn from '../ContentColumn/ContentColumn.vue'
 import TableColumn from '../TableColumn/TableColumn.vue'
 import { ref } from 'vue'
 import type { selectedRoute } from '../NavColumn/types/selectedRoute'
+import DatasetGrid from '../DatasetContent/DatasetGrid.vue'
 
 import Router from '../router'
 
@@ -27,7 +28,10 @@ const route = ref<selectedRoute>(Router.getInitialRoute())
     />
 
     <!-- second column -->
-    <content-column> You are in the route: {{ route.route }}</content-column>
+    <content-column>
+      You are in the route: {{ route.route }}
+      <dataset-grid />
+    </content-column>
 
     <!-- third column -->
 
