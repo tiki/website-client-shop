@@ -1,15 +1,11 @@
 <script setup lang="ts">
 import { type PropType, ref } from 'vue'
-
-interface navSection {
-  title: string
-  navList: string[]
-}
+import { type Route } from './types/route'
 
 defineProps({
   navSection: {
     required: true,
-    type: Object as PropType<navSection[]>
+    type: Object as PropType<Route[]>
   }
 })
 

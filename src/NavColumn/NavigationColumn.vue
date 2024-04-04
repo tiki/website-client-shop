@@ -1,29 +1,10 @@
 <script setup lang="ts">
 import NavSection from './NavSection.vue'
 import NavHeader from './NavHeader.vue'
+import Router from './router'
 
-const contentSection = [
-  {
-    title: 'MY ACCOUNT',
-    navList: ['Organization', 'Billing and Usage', 'Access Keys', 'Legal Compliance']
-  },
-  {
-    title: 'DATASETS',
-    navList: ['Transactions', 'Receipts', 'Demographics']
-  },
-  {
-    title: 'DATA ACCESS',
-    navList: [
-      'Playground',
-      'AWS Athena',
-      'Snowflake',
-      'Apache Airflow',
-      'Google BigQuery',
-      'Apache Spark',
-      'Databricks'
-    ]
-  }
-]
+const navList = ['Transactions', 'Receipts', 'Demographics']
+const contentSection = Router.getRoutes(navList)
 </script>
 
 <template>
