@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { type PropType, ref } from 'vue'
+import { type PropType, ref, onMounted } from 'vue'
 import { type Route } from './types/route'
 import type { selectedRoute } from './types/selectedRoute'
 
-defineProps({
+const props = defineProps({
   navSection: {
     required: true,
     type: Object as PropType<Route[]>
@@ -21,6 +21,10 @@ const handleRouting = (route: string, title: string) => {
   }
   emits('route', selectedRoute.value)
 }
+
+onMounted(() => {
+  selectedRoute.value = { title: props.navSection[0].title, route: props.navSection[0].navList[2] }
+})
 </script>
 
 <template>
