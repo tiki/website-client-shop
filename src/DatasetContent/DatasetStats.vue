@@ -38,6 +38,7 @@ defineProps({
 .stat-item {
   display: flex;
   justify-content: space-between;
+  padding-right: 2em;
   margin: 1em 0;
 }
 
