@@ -2,7 +2,7 @@
 import NavigationColumn from '../NavColumn/NavigationColumn.vue'
 import ContentColumn from '../ContentColumn/ContentColumn.vue'
 import TableColumn from '../TableColumn/TableColumn.vue'
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 import type { selectedRoute } from '../NavColumn/types/selectedRoute'
 import DatasetGrid from '../DatasetContent/DatasetGrid.vue'
 
@@ -12,6 +12,10 @@ const datasetsRoutes = ['Transactions', 'Receipts', 'Demographics']
 const navigationList = Router.getRoutes(datasetsRoutes)
 
 const route = ref<selectedRoute>(Router.getInitialRoute())
+
+const componentHandler = computed(() => {
+  return route.value.title === 'DATASETS' ? DatasetGrid : null
+})
 </script>
 
 <template>
@@ -20,7 +24,6 @@ const route = ref<selectedRoute>(Router.getInitialRoute())
     <navigation-column
       @route="
         (routeName: selectedRoute) => {
-          console.log('teste', routeName.route)
           route = routeName
         }
       "
@@ -29,8 +32,8 @@ const route = ref<selectedRoute>(Router.getInitialRoute())
 
     <!-- second column -->
     <content-column>
-      You are in the route: {{ route.route }}
-      <dataset-grid />
+      <component :is="componentHandler"></component>
+      <!-- <dataset-grid /> -->
     </content-column>
 
     <!-- third column -->

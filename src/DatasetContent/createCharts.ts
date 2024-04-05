@@ -6,7 +6,6 @@ export default function createCharts(Charts?: ChartData[]) {
   const lastContainer = document.getElementById('dataset-last-grid-container')
 
   Charts?.forEach((chart, index) => {
-    console.log(chart, index)
     let newCanva = document.createElement('canvas')
     newCanva.id = `${index}`
     newCanva.width = 10
@@ -35,5 +34,4 @@ export default function createCharts(Charts?: ChartData[]) {
       }
     })
   })
-  console.log(firstContainer, lastContainer)
 }
