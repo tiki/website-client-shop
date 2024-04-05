@@ -82,6 +82,19 @@ const chartsData: ChartData[] = [
   }
 ]
 
+const stats: Stats = {
+  updates: 'DAILY',
+  updated_at: new Date(),
+  years: '3.1',
+  contains: [
+    'in-store purchases',
+    'ecommerce purchases',
+    'sku-level receipts',
+    'Card transactions'
+  ],
+  approved_for: ['Analytics', 'Advertising', 'AI Training', 'Personalization']
+}
+
 onMounted(() => {
   createCharts(chartsData)
 })
@@ -89,7 +102,7 @@ onMounted(() => {
 
 <template>
   <div id="dataset-first-grid-container">
-    <dataset-stats />
+    <dataset-stats :stats="stats" />
   </div>
 
   <div id="dataset-last-grid-container"></div>

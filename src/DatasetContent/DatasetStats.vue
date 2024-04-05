@@ -1,7 +1,11 @@
 <script setup lang="ts">
+import Stats from './types/Stats.ts'
+import { PropType } from 'vue'
+
 defineProps({
   stats: {
-    required: true
+    required: true,
+    type: Object as PropType<Stats>
   }
 })
 </script>
@@ -9,26 +13,22 @@ defineProps({
 <template>
   <div class="dataset-stats-container">
     <div class="stats-list">
-      <div class="stat-item"><span>Updates</span> Daily</div>
-      <div class="stat-item"><span>Updates</span> Daily</div>
-      <div class="stat-item"><span>Updates</span> Daily</div>
+      <div class="stat-item"><span>Updates</span> {{ stats.updates }}</div>
+      <div class="stat-item"><span>Updated At</span> {{ stats.updated_at.toLocaleString() }}</div>
+      <div class="stat-item"><span>years</span> {{ stats.years }}</div>
     </div>
     <div class="tags-container">
       <span>CONTAINS</span>
       <div class="tags-list">
-        <div class="contain-item">Card Transactions</div>
-        <div class="contain-item">in-store purchases</div>
-        <div class="contain-item">ecommerce purchases</div>
-        <div class="contain-item">sku-level receipts</div>
+        <div class="contain-item" v-for="contain in stats.contains" :key="contain">
+          {{ contain }}
+        </div>
       </div>
     </div>
     <div class="tags-container">
       <span>APPROVED FOR</span>
       <div class="tags-list">
-        <div class="contain-item">Card Transactions</div>
-        <div class="contain-item">in-store purchases</div>
-        <div class="contain-item">ecommerce purchases</div>
-        <div class="contain-item">sku-level receipts</div>
+        <div class="contain-item" v-for="approved in stats.approved_for">{{ approved }}</div>
       </div>
     </div>
   </div>
