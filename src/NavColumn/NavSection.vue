@@ -1,26 +1,30 @@
 <script setup lang="ts">
-import { type PropType, ref } from 'vue'
+import { type PropType, ref, onMounted } from 'vue'
+import { type Route } from './types/route'
+import type { selectedRoute } from './types/selectedRoute'
 
-interface navSection {
-  title: string
-  navList: string[]
-}
-
-defineProps({
+const props = defineProps({
   navSection: {
     required: true,
-    type: Object as PropType<navSection[]>
+    type: Object as PropType<Route[]>
   }
 })
 
 const emits = defineEmits(['route'])
 
-const selectedRoute = ref<string>()
+const selectedRoute = ref<selectedRoute>()
 
-const handleRouting = (route: string) => {
-  selectedRoute.value = route
-  emits('route', route)
+const handleRouting = (route: string, title: string) => {
+  selectedRoute.value = {
+    title,
+    route
+  }
+  emits('route', selectedRoute.value)
 }
+
+onMounted(() => {
+  selectedRoute.value = { title: props.navSection[0].title, route: props.navSection[0].navList[2] }
+})
 </script>
 
 <template>
@@ -30,8 +34,8 @@ const handleRouting = (route: string) => {
       <li
         v-for="route in section.navList"
         :key="route"
-        @click="handleRouting(route)"
-        :class="route === selectedRoute ? 'selected-route' : ''"
+        @click="handleRouting(route, section.title)"
+        :class="route === selectedRoute?.route ? 'selected-route' : ''"
       >
         {{ route }}
       </li>

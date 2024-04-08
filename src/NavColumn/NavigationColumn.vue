@@ -1,35 +1,25 @@
 <script setup lang="ts">
 import NavSection from './NavSection.vue'
 import NavHeader from './NavHeader.vue'
+import type { PropType } from 'vue'
+import type { Route } from './types/route'
+import type { selectedRoute } from './types/selectedRoute'
 
-const contentSection = [
-  {
-    title: 'MY ACCOUNT',
-    navList: ['Organization', 'Billing and Usage', 'Access Keys', 'Legal Compliance']
-  },
-  {
-    title: 'DATASETS',
-    navList: ['Transactions', 'Receipts', 'Demographics']
-  },
-  {
-    title: 'DATA ACCESS',
-    navList: [
-      'Playground',
-      'AWS Athena',
-      'Snowflake',
-      'Apache Airflow',
-      'Google BigQuery',
-      'Apache Spark',
-      'Databricks'
-    ]
+defineProps({
+  navigationList: {
+    required: true,
+    type: Object as PropType<Route[]>
   }
-]
+})
 </script>
 
 <template>
   <div class="nav-column-container">
     <nav-header />
-    <nav-section :nav-section="contentSection" @route="(route: string) => $emit('route', route)" />
+    <nav-section
+      :nav-section="navigationList"
+      @route="(route: selectedRoute) => $emit('route', route)"
+    />
   </div>
 </template>
 
@@ -44,3 +34,4 @@ const contentSection = [
   padding: 0 2em;
 }
 </style>
+../router
