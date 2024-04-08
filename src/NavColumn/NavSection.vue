@@ -48,6 +48,7 @@ p {
   font-weight: bold;
   font-size: 0.9em;
   margin-top: 2em;
+  color: var(--primary-text-color);
 }
 
 li {
@@ -56,12 +57,13 @@ li {
   margin: 0.75em 0;
   cursor: pointer;
   font-size: 0.9em;
+  color: var(--primary-text-color);
 }
 
 li:hover,
 .selected-route {
-  color: #00b272;
-  background-color: #00b27210;
+  color: var(--accent-color);
+  background-color: color-mix(in srgb, currentColor 10%, transparent);
   border-radius: 0.5em;
 }
 </style>

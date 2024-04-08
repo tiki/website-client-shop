@@ -43,7 +43,7 @@ const checkTable = () => {
 h2 {
   font-size: 1em;
   margin-bottom: 0.5em;
-  color: #505c59;
+  color: var(--secondary-text-color);
   font-weight: 500;
 }
 li {
@@ -63,7 +63,7 @@ li {
 }
 
 .table-cell-description {
-  color: #00000060;
+  color: color-mix(in srgb, var(--primary-text-color) 50%, transparent);
   font-size: 0.85em;
 }
 </style>

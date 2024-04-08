@@ -23,6 +23,6 @@ input {
 }
 
 input::placeholder {
-  color: black;
+  color: var(--primary-text-color);
 }
 </style>
