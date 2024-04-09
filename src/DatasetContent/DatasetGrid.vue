@@ -22,12 +22,8 @@ const chartsData: ChartData[] = [
         label: 'My First Dataset',
         data: [65, 59, 80, 81, 56, 55, 40],
         borderColor: 'rgb(75, 192, 192)',
-        backgroundColor: '#00b272'
-      },
-      {
-        label: 'My second Dataset',
-        data: [55, 99, 112, 81, 56, 55, 40],
-        borderColor: 'rgb(75, 192, 192)'
+        backgroundColor: '#00b272',
+        fill: true
       }
     ]
   },

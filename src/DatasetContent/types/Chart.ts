@@ -11,6 +11,7 @@ interface Dataset {
   backgroundColor?: string
   borderColor?: string
   color?: string
+  fill?: boolean
 }
 
 export interface ChartData {
