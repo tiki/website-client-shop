@@ -102,4 +102,3 @@ onMounted(() => {
   gap: 1em;
 }
 </style>
-./createCharts
