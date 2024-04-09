@@ -1,12 +1,22 @@
 import { type ChartType } from 'chart.js/auto'
 
+interface Axis {
+  x: number
+  y: number
+  r?: number
+}
 interface Dataset {
   label: string
-  data: string | number
+  data: string | number[] | Axis[]
+  backgroundColor?: string
+  borderColor?: string
+  color?: string
 }
 
 export interface ChartData {
   type: ChartType
   labels: (string | number)[]
   datasets: Dataset[]
+  width?: number
+  height?: number
 }

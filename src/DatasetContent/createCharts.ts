@@ -8,8 +8,8 @@ export default function createCharts(Charts?: ChartData[]) {
   Charts?.forEach((chart, index) => {
     let newCanva = document.createElement('canvas')
     newCanva.id = `${index}`
-    newCanva.width = 10
-    newCanva.height = 10
+    newCanva.width = chart.width ?? 10
+    newCanva.height = chart.height ?? 10
 
     let newDiv = document.createElement('div')
 
@@ -24,13 +24,8 @@ export default function createCharts(Charts?: ChartData[]) {
     new Chart(newCanva.id, {
       type: chart.type,
       data: {
-        labels: chart.labels.map((row) => row),
-        datasets: [
-          {
-            label: 'anything',
-            data: chart.datasets.map((row) => row.data)
-          }
-        ]
+        labels: chart.labels,
+        datasets: chart.datasets
       }
     })
   })

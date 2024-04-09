@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import Stats from './types/Stats.ts'
-import { PropType } from 'vue'
+import type { Stats } from './types'
+import { type PropType } from 'vue'
 
 defineProps({
   stats: {

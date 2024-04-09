@@ -1,82 +1,63 @@
 <script setup lang="ts">
 import DatasetStats from './DatasetStats.vue'
-import Chart from 'chart.js/auto'
 import { onMounted } from 'vue'
-import createCharts from './createCharts.ts'
-import ChartData from './types/Chart.ts'
+import createCharts from './createCharts'
+import type { ChartData, Stats } from './types'
 
 const chartsData: ChartData[] = [
   {
+    width: 5,
+    height: 2,
     type: 'bar',
     labels: ['January', 'February', 'March'],
-    datasets: [
-      {
-        label: 'Sales',
-        data: 300
-      },
-      {
-        label: 'Expenses',
-        data: 200
-      },
-      {
-        label: 'Sales',
-        data: 300
-      },
-      {
-        label: 'Expenses',
-        data: 200
-      },
-      {
-        label: 'Sales',
-        data: 300
-      },
-      {
-        label: 'Expenses',
-        data: 200
-      },
-      {
-        label: 'Sales',
-        data: 300
-      },
-      {
-        label: 'Expenses',
-        data: 200
-      }
-    ]
+    datasets: [{ data: [65, 59, 80, 81, 56, 55, 40], label: 'Something' }]
   },
   {
+    width: 12,
+    height: 15,
     type: 'line',
     labels: ['Q1', 'Q2', 'Q3'],
     datasets: [
       {
-        label: 'Profit',
-        data: 500
+        label: 'My First Dataset',
+        data: [65, 59, 80, 81, 56, 55, 40],
+        borderColor: 'rgb(75, 192, 192)',
+        backgroundColor: '#00b272'
       },
       {
-        label: 'Profit',
-        data: 600
-      },
-      {
-        label: 'Profit',
-        data: 700
+        label: 'My second Dataset',
+        data: [55, 99, 112, 81, 56, 55, 40],
+        borderColor: 'rgb(75, 192, 192)'
       }
     ]
   },
   {
-    type: 'doughnut',
+    width: 15,
+    height: 15,
+    type: 'scatter',
     labels: ['Red', 'Blue', 'Yellow'],
     datasets: [
       {
-        label: 'Profit',
-        data: 500
-      },
-      {
-        label: 'Profit',
-        data: 600
-      },
-      {
-        label: 'Profit',
-        data: 700
+        label: 'My First Dataset',
+        data: [
+          {
+            x: -10,
+            y: 0
+          },
+          {
+            x: 0,
+            y: 10
+          },
+          {
+            x: 10,
+            y: 5
+          },
+          {
+            x: 0.5,
+            y: 5.5
+          }
+        ],
+        borderColor: 'rgb(75, 192, 192)'
       }
     ]
   }
