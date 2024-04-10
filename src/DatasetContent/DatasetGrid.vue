@@ -3,6 +3,8 @@ import DatasetStats from './DatasetStats.vue'
 import { onMounted } from 'vue'
 import createCharts from './createCharts'
 import type { ChartData, Stats } from './types'
+import CustomButton from '../CustomButton/CustomButton.vue'
+import { ButtonState } from '../CustomButton/ButtonState'
 
 const chartsData: ChartData[] = [
   {
@@ -10,7 +12,9 @@ const chartsData: ChartData[] = [
     height: 2,
     type: 'bar',
     labels: ['January', 'February', 'March'],
-    datasets: [{ data: [65, 59, 80, 81, 56, 55, 40], label: 'Something' }]
+    datasets: [
+      { data: [65, 59, 80, 81, 56, 55, 40], label: 'Something', backgroundColor: '#00b27250' }
+    ]
   },
   {
     width: 12,
@@ -21,8 +25,8 @@ const chartsData: ChartData[] = [
       {
         label: 'My First Dataset',
         data: [65, 59, 80, 81, 56, 55, 40],
-        borderColor: 'rgb(75, 192, 192)',
-        backgroundColor: '#00b272',
+        borderColor: '#00b27250',
+        backgroundColor: '#00b27250',
         fill: true
       }
     ]
@@ -53,7 +57,8 @@ const chartsData: ChartData[] = [
             y: 5.5
           }
         ],
-        borderColor: 'rgb(75, 192, 192)'
+        borderColor: '#00b27250',
+        backgroundColor: '#00b27250'
       }
     ]
   }
@@ -80,6 +85,10 @@ onMounted(() => {
 <template>
   <div id="dataset-first-grid-container">
     <dataset-stats :stats="stats" />
+    <div id="chart-button-container">
+      <custom-button :button-text="'Compliance Report'" :state="ButtonState.OUTLINED" />
+      <custom-button :button-text="'View Sample'" :state="ButtonState.FILLED" />
+    </div>
   </div>
 
   <div id="dataset-last-grid-container"></div>
@@ -92,9 +101,15 @@ onMounted(() => {
   gap: 1em;
 }
 #dataset-last-grid-container {
-  margin-top: 1em;
+  margin-top: 2em;
   display: grid;
   grid-template-columns: 50% 50%;
   gap: 1em;
+}
+#chart-button-container {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  justify-content: center;
 }
 </style>

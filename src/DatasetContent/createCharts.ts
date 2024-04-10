@@ -2,7 +2,7 @@ import { type ChartData } from './types/Chart'
 import { Chart } from 'chart.js/auto'
 
 export default function createCharts(Charts?: ChartData[]) {
-  const firstContainer = document.getElementById('dataset-first-grid-container')
+  const firstContainer = document.getElementById('chart-button-container')
   const lastContainer = document.getElementById('dataset-last-grid-container')
 
   Charts?.forEach((chart, index) => {
@@ -14,8 +14,7 @@ export default function createCharts(Charts?: ChartData[]) {
     let newDiv = document.createElement('div')
 
     if (index == 0) {
-      firstContainer?.appendChild(newDiv)
-      newDiv?.appendChild(newCanva)
+      firstContainer?.appendChild(newCanva)
     } else {
       lastContainer?.appendChild(newDiv)
       newDiv?.appendChild(newCanva)
