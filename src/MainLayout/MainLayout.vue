@@ -5,6 +5,7 @@ import TableColumn from '../TableColumn/TableColumn.vue'
 import { computed, ref } from 'vue'
 import type { selectedRoute } from '../NavColumn/types/selectedRoute'
 import DatasetGrid from '../DatasetContent/DatasetGrid.vue'
+import LegalComplianceContainer from '../LegalCompliance/LegalComplianceContent.vue'
 
 import Router from '../router'
 
@@ -14,6 +15,10 @@ const navigationList = Router.getRoutes(datasetsRoutes)
 const route = ref<selectedRoute>(Router.getInitialRoute())
 
 const componentHandler = computed(() => {
+  switch (route.value.route) {
+    case 'Legal Compliance':
+      return LegalComplianceContainer
+  }
   return route.value.title === 'DATASETS' ? DatasetGrid : null
 })
 
