@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import Stats from './types/Stats.ts'
-import { PropType } from 'vue'
+import type { Stats } from './types'
+import { type PropType } from 'vue'
 
 defineProps({
   stats: {
@@ -40,12 +40,14 @@ defineProps({
   justify-content: space-between;
   padding-right: 2em;
   margin: 1em 0;
+  color: var(--primary-text-color);
 }
 
 .stat-item span,
 .tags-container span {
   font-weight: 600;
   text-transform: uppercase;
+  color: var(--primary-text-color);
 }
 
 .tags-list {
@@ -59,6 +61,7 @@ defineProps({
 }
 
 .contain-item {
+  color: var(--primary-text-color);
   display: flex;
   align-items: center;
   font-size: 0.85em;

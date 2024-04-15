@@ -1,82 +1,64 @@
 <script setup lang="ts">
 import DatasetStats from './DatasetStats.vue'
-import Chart from 'chart.js/auto'
 import { onMounted } from 'vue'
-import createCharts from './createCharts.ts'
-import ChartData from './types/Chart.ts'
+import createCharts from './createCharts'
+import type { ChartData, Stats } from './types'
+import CustomButton from '../CustomButton/CustomButton.vue'
+import { ButtonState } from '../CustomButton/ButtonState'
 
 const chartsData: ChartData[] = [
   {
+    width: 5,
+    height: 2,
     type: 'bar',
     labels: ['January', 'February', 'March'],
     datasets: [
-      {
-        label: 'Sales',
-        data: 300
-      },
-      {
-        label: 'Expenses',
-        data: 200
-      },
-      {
-        label: 'Sales',
-        data: 300
-      },
-      {
-        label: 'Expenses',
-        data: 200
-      },
-      {
-        label: 'Sales',
-        data: 300
-      },
-      {
-        label: 'Expenses',
-        data: 200
-      },
-      {
-        label: 'Sales',
-        data: 300
-      },
-      {
-        label: 'Expenses',
-        data: 200
-      }
+      { data: [65, 59, 80, 81, 56, 55, 40], label: 'Something', backgroundColor: '#00b27250' }
     ]
   },
   {
+    width: 12,
+    height: 15,
     type: 'line',
     labels: ['Q1', 'Q2', 'Q3'],
     datasets: [
       {
-        label: 'Profit',
-        data: 500
-      },
-      {
-        label: 'Profit',
-        data: 600
-      },
-      {
-        label: 'Profit',
-        data: 700
+        label: 'My First Dataset',
+        data: [65, 59, 80, 81, 56, 55, 40],
+        borderColor: '#00b27250',
+        backgroundColor: '#00b27250',
+        fill: true
       }
     ]
   },
   {
-    type: 'doughnut',
+    width: 15,
+    height: 15,
+    type: 'scatter',
     labels: ['Red', 'Blue', 'Yellow'],
     datasets: [
       {
-        label: 'Profit',
-        data: 500
-      },
-      {
-        label: 'Profit',
-        data: 600
-      },
-      {
-        label: 'Profit',
-        data: 700
+        label: 'My First Dataset',
+        data: [
+          {
+            x: -10,
+            y: 0
+          },
+          {
+            x: 0,
+            y: 10
+          },
+          {
+            x: 10,
+            y: 5
+          },
+          {
+            x: 0.5,
+            y: 5.5
+          }
+        ],
+        borderColor: '#00b27250',
+        backgroundColor: '#00b27250'
       }
     ]
   }
@@ -103,6 +85,10 @@ onMounted(() => {
 <template>
   <div id="dataset-first-grid-container">
     <dataset-stats :stats="stats" />
+    <div id="chart-button-container">
+      <custom-button :button-text="'Compliance Report'" :state="ButtonState.OUTLINED" />
+      <custom-button :button-text="'View Sample'" :state="ButtonState.FILLED" />
+    </div>
   </div>
 
   <div id="dataset-last-grid-container"></div>
@@ -115,10 +101,15 @@ onMounted(() => {
   gap: 1em;
 }
 #dataset-last-grid-container {
-  margin-top: 1em;
+  margin-top: 2em;
   display: grid;
   grid-template-columns: 50% 50%;
   gap: 1em;
 }
+#chart-button-container {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  justify-content: center;
+}
 </style>
-./createCharts

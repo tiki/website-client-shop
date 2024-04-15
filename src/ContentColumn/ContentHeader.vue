@@ -28,12 +28,12 @@ defineProps({
 }
 
 h1 {
-  color: #1c0000;
+  color: var(--primary-text-color);
   font-weight: 600;
 }
 
 h2 {
-  color: #505c59;
+  color: var(--secondary-text-color);
   font-size: 1em;
   font-weight: 300;
   margin-top: 0.5em;
