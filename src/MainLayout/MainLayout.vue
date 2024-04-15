@@ -31,9 +31,8 @@ const componentHandler = computed(() => {
     />
 
     <!-- second column -->
-    <content-column>
+    <content-column :title="`${route.title}: ${route.route}`">
       <component :is="componentHandler"></component>
-      <!-- <dataset-grid /> -->
     </content-column>
 
     <!-- third column -->

@@ -30,6 +30,7 @@ defineProps({
 h1 {
   color: var(--primary-text-color);
   font-weight: 600;
+  text-transform: capitalize;
 }
 
 h2 {
