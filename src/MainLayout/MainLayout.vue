@@ -19,7 +19,7 @@ const componentHandler = computed(() => {
     case 'Legal Compliance':
       return LegalComplianceContainer
   }
-  return route.value.title === 'DATASETS' ? DatasetGrid : null
+  return route.value.title === 'datasets' ? DatasetGrid : null
 })
 
 const handleSubtitle = computed(() => {
