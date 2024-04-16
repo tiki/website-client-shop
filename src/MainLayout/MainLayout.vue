@@ -6,6 +6,8 @@ import { computed, ref } from 'vue'
 import type { selectedRoute } from '../NavColumn/types/selectedRoute'
 import DatasetGrid from '../DatasetContent/DatasetGrid.vue'
 import LegalComplianceContainer from '../LegalCompliance/LegalComplianceContent.vue'
+import ThirdColumn from '../ThirdColumn/ThirdColumn.vue'
+import DataSourceAgreement from '../LegalCompliance/DataSourceAgreement.vue'
 
 import Router from '../router'
 
@@ -33,11 +35,19 @@ const handleSubtitle = computed(() => {
       demographics to various other datasets, such as receipts and demographics.`
   }
 })
+
+const thirdColumnHandler = computed(() => {
+  switch (true) {
+    case route.value.title === 'datasets':
+      return TableColumn
+    case route.value.route === 'Legal Compliance':
+      return DataSourceAgreement
+  }
+})
 </script>
 
 <template>
   <div class="container">
-    <!-- first column  -->
     <navigation-column
       @route="
         (routeName: selectedRoute) => {
@@ -47,14 +57,13 @@ const handleSubtitle = computed(() => {
       :navigationList="navigationList"
     />
 
-    <!-- second column -->
     <content-column :title="`${route.title}: ${route.route}`" :subtitle="handleSubtitle">
       <component :is="componentHandler"></component>
     </content-column>
 
-    <!-- third column -->
-
-    <table-column :table="route.route" />
+    <third-column>
+      <component :is="thirdColumnHandler" :table="route.route"></component>
+    </third-column>
   </div>
 </template>
 
