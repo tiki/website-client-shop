@@ -47,6 +47,7 @@ input[type='checkbox'] {
   border-left: 1px solid #00000020;
   border-right: 1px solid #00000020;
   padding: 0.5em 1em;
+  width: 35%;
 }
 .agreement-checkbox-container {
   display: flex;
@@ -59,5 +60,6 @@ input[type='checkbox'] {
 
 .agreement-checkbox-container span {
   text-decoration: underline;
+  width: 50%;
 }
 </style>
