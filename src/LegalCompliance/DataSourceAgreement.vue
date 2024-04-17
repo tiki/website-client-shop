@@ -36,6 +36,7 @@ input[type='checkbox']:checked + label:after {
   justify-content: center;
   content: '\2713';
   font-size: 0.85em;
+  cursor: pointer;
   color: #00000090;
 }
 

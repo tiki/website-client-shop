@@ -13,24 +13,41 @@ const props = defineProps({
     required: true
   }
 })
+const accentColor = getComputedStyle(document.body).getPropertyValue('--accent-color')
 
-const datasources: ChartData[] = [
-  {
-    width: 5,
-    height: 2,
-    type: 'doughnut',
-    labels: ['App 1', 'App 2', 'Stripe', 'Hubspot'],
-    datasets: [
-      {
-        data: [68, 52, 36, 20],
-        label: '',
-        backgroundColor: ['#00b27268', '#00b27252', '#00b27236', '#00b27220']
-      }
-    ]
-  }
-]
+const datasources: ChartData[] =
+  props.containerId === 'data-sources'
+    ? [
+        {
+          width: 5,
+          height: 2,
+          type: 'doughnut',
+          labels: ['App 1', 'App 2', 'Stripe', 'Hubspot'],
+          datasets: [
+            {
+              data: [90, 52, 36, 10],
+              label: '',
+              backgroundColor: [68, 52, 36, 20].map((el) => accentColor + el)
+            }
+          ]
+        }
+      ]
+    : [
+        {
+          width: 5,
+          height: 2,
+          type: 'doughnut',
+          labels: ['ANALYTICS', 'AI TRAINING', 'ADVERTISING', 'ATTRIBUTION'],
+          datasets: [
+            {
+              data: [68, 52, 36, 20],
+              label: '',
+              backgroundColor: [68, 52, 36, 20].map((el) => accentColor + el)
+            }
+          ]
+        }
+      ]
 onMounted(() => {
-  console.log('teste')
   try {
     createCharts(datasources, props.containerId)
   } catch {

@@ -6,12 +6,10 @@ export default function createCharts(
   firstContainerId?: string,
   lastContainerId?: string
 ) {
-  debugger
   const firstContainer = document.getElementById(firstContainerId!)
   const lastContainer = document.getElementById(lastContainerId!)
 
   Charts?.forEach((chart, index) => {
-    console.log('teste 2', chart)
     let newCanva = document.createElement('canvas')
     newCanva.id = `${window.crypto.randomUUID()}`
     newCanva.width = chart.width ?? 10
