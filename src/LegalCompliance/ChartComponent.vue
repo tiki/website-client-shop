@@ -14,7 +14,8 @@ defineProps({
       <svg width="250" height="250" viewBox="0 0 250 250" class="circular-progress">
         <circle class="bg"></circle>
         <circle class="fg"></circle>
-        <circle class="sl"></circle>
+        <circle class="sl" cx="20"></circle>
+        <!--Bottom Half-->
       </svg>
     </div>
   </div>
@@ -74,9 +75,10 @@ h1 {
   stroke-dasharray: var(--dash) calc(var(--circumference) - var(--dash));
   transition: stroke-dasharray 0.3s linear 0s;
   stroke: red;
+  clip-path: padding-box circle(125px at 250px 110px);
 }
 
-@property --progress {
+/* @property --progress {
   syntax: '<number>';
   inherits: false;
   initial-value: 0;
@@ -89,5 +91,5 @@ h1 {
   to {
     --progress: 100;
   }
-}
+} */
 </style>
