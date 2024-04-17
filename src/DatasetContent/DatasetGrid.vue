@@ -78,7 +78,7 @@ const stats: Stats = {
 }
 
 onMounted(() => {
-  createCharts(chartsData)
+  createCharts(chartsData, 'chart-button-container', 'dataset-last-grid-container')
 })
 </script>
 

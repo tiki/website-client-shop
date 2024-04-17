@@ -30,8 +30,12 @@ const trailInfo = [
   <div class="legal-compliance-container">
     <audit-trail :trailInfo="trailInfo" />
     <div class="chart-container">
-      <chart-component :title="'DATA SOURCES'" />
-      <chart-component :title="'DATA SOURCES'" />
+      <chart-component
+        :title="'DATA SOURCES'"
+        v-for="index in ['data-sources', 'approved-for']"
+        :key="index"
+        :containerId="index"
+      />
     </div>
   </div>
 </template>
