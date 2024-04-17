@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import AuditTrail from './AuditTrail.vue'
+import ChartComponent from './ChartComponent.vue'
 
 const trailInfo = [
   {
@@ -28,7 +29,10 @@ const trailInfo = [
 <template>
   <div class="legal-compliance-container">
     <audit-trail :trailInfo="trailInfo" />
-    <h1>charts</h1>
+    <div class="chart-container">
+      <chart-component :title="'DATA SOURCES'" />
+      <chart-component :title="'DATA SOURCES'" />
+    </div>
   </div>
 </template>
 
@@ -36,5 +40,12 @@ const trailInfo = [
 .legal-compliance-container {
   display: flex;
   justify-content: space-between;
+}
+
+.chart-container {
+  width: 100%;
+  padding-left: 2em;
+  display: flex;
+  flex-direction: column;
 }
 </style>
