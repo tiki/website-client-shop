@@ -49,6 +49,7 @@ p {
   font-size: 0.9em;
   margin-top: 2em;
   color: var(--primary-text-color);
+  text-transform: uppercase;
 }
 
 li {

@@ -8,7 +8,7 @@ interface Axis {
 interface Dataset {
   label: string
   data: string | number[] | Axis[]
-  backgroundColor?: string
+  backgroundColor?: string | string[]
   borderColor?: string
   color?: string
   fill?: boolean

@@ -1,13 +1,17 @@
 import { type ChartData } from './types/Chart'
 import { Chart } from 'chart.js/auto'
 
-export default function createCharts(Charts?: ChartData[]) {
-  const firstContainer = document.getElementById('chart-button-container')
-  const lastContainer = document.getElementById('dataset-last-grid-container')
+export default function createCharts(
+  Charts?: ChartData[],
+  firstContainerId?: string,
+  lastContainerId?: string
+) {
+  const firstContainer = document.getElementById(firstContainerId!)
+  const lastContainer = document.getElementById(lastContainerId!)
 
   Charts?.forEach((chart, index) => {
     let newCanva = document.createElement('canvas')
-    newCanva.id = `${index}`
+    newCanva.id = `${window.crypto.randomUUID()}`
     newCanva.width = chart.width ?? 10
     newCanva.height = chart.height ?? 10
 

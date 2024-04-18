@@ -29,7 +29,7 @@ export default class Router {
 
   public static getInitialRoute(): selectedRoute {
     return {
-      title: 'MY ACCOUNT',
+      title: 'my account',
       route: 'Access Keys'
     }
   }
@@ -40,15 +40,15 @@ export default class Router {
 
     const routes = [
       {
-        title: 'MY ACCOUNT',
+        title: 'my account',
         navList: instance.myAccountRoutes
       },
       {
-        title: 'DATASETS',
+        title: 'datasets',
         navList: instance.datasetsRoutes
       },
       {
-        title: 'DATA ACCESS',
+        title: 'data access',
         navList: instance.dataAccessroutes
       }
     ]

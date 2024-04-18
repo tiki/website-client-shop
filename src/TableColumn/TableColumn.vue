@@ -11,17 +11,10 @@ defineProps({
 </script>
 
 <template>
-  <div class="table-column-container">
+  <div>
     <table-column-header :table="table" />
     <table-taxonomy :table="table" />
   </div>
 </template>
 
-<style scoped>
-.table-column-container {
-  height: 100vh;
-  width: 30%;
-  margin-top: 1.5em;
-  padding: 0 1.5em;
-}
-</style>
+<style scoped></style>
