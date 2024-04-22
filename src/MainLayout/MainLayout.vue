@@ -2,7 +2,7 @@
 import NavigationColumn from '../NavColumn/NavigationColumn.vue'
 import ContentColumn from '../ContentColumn/ContentColumn.vue'
 import TableColumn from '../TableColumn/TableColumn.vue'
-import { computed, ref } from 'vue'
+import { computed, onMounted, ref } from 'vue'
 import type { selectedRoute } from '../NavColumn/types/selectedRoute'
 import DatasetGrid from '../DatasetContent/DatasetGrid.vue'
 import LegalComplianceContainer from '../LegalCompliance/LegalComplianceContent.vue'
@@ -44,12 +44,15 @@ const thirdColumnHandler = computed(() => {
       return DataSourceAgreement
   }
 })
-
 const isOpen = ref<boolean>(false)
 
 const closeDrawer = () => {
   if (isOpen.value === true) isOpen.value = false
 }
+
+onMounted(() => {
+  if (window.outerWidth >= 1280) isOpen.value = true
+})
 </script>
 
 <template>
