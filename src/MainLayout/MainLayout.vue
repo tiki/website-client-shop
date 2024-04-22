@@ -44,10 +44,16 @@ const thirdColumnHandler = computed(() => {
       return DataSourceAgreement
   }
 })
+
+const isOpen = ref<boolean>(false)
+
+const closeDrawer = () => {
+  if (isOpen.value === true) isOpen.value = false
+}
 </script>
 
 <template>
-  <div class="container">
+  <div class="container" :class="isOpen ? 'content-layer' : ''">
     <navigation-column
       @route="
         (routeName: selectedRoute) => {
@@ -55,13 +61,18 @@ const thirdColumnHandler = computed(() => {
         }
       "
       :navigationList="navigationList"
+      :isOpen="isOpen"
     />
 
-    <content-column :title="`${route.title}: ${route.route}`" :subtitle="handleSubtitle">
+    <content-column
+      :title="`${route.title}: ${route.route}`"
+      :subtitle="handleSubtitle"
+      @toggle="isOpen = !isOpen"
+    >
       <component :is="componentHandler"></component>
     </content-column>
 
-    <third-column>
+    <third-column @click="closeDrawer()">
       <component :is="thirdColumnHandler" :table="route.route"></component>
     </third-column>
   </div>
@@ -75,6 +86,11 @@ const thirdColumnHandler = computed(() => {
 @media (max-width: 1279px) {
   .container {
     flex-direction: column;
+    position: relative;
+  }
+
+  .content-layer {
+    background-color: #00000090;
   }
 }
 </style>

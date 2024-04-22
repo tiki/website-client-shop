@@ -11,11 +11,13 @@ defineProps({
     required: true
   }
 })
+
+defineEmits(['toggle'])
 </script>
 
 <template>
   <div class="content-column-container">
-    <content-header :title="title" :subtitle="subtitle" />
+    <content-header :title="title" :subtitle="subtitle" @toggle="$emit('toggle')" />
     <div class="slot-container">
       <slot />
     </div>

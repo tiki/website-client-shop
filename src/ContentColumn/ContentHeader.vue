@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import MenuIcon from '../Icons/MenuIcon.vue'
 defineProps({
   title: {
     type: String,
@@ -9,11 +10,18 @@ defineProps({
     required: true
   }
 })
+
+defineEmits(['toggle'])
 </script>
 
 <template>
   <div class="container">
-    <h1>{{ title }}</h1>
+    <div class="title-button-container">
+      <h1>{{ title }}</h1>
+      <button class="menu-button" @click="$emit('toggle')">
+        <menu-icon />
+      </button>
+    </div>
     <h2>
       {{ subtitle }}
     </h2>
@@ -44,5 +52,25 @@ h2 {
 hr {
   margin-top: 1.5em;
   border-top: 1px solid #00000010;
+}
+
+.title-button-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.menu-button {
+  border-radius: 0.25em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--secondary-text-color);
+  background-color: transparent;
+  border: 1px solid var(--secondary-text-color);
+  border: none;
+  box-shadow:
+    0 4px 8px 0 rgba(0, 0, 0, 0.2),
+    0 4px 8px 0 rgba(0, 0, 0, 0.1);
 }
 </style>
