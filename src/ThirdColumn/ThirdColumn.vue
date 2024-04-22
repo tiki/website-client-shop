@@ -1,7 +1,20 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const props = defineProps({
+  isOpen: {
+    type: Boolean,
+    required: true
+  }
+})
+
+const emit = defineEmits(['toggle'])
+
+const closeDrawer = () => {
+  if (props.isOpen) emit('toggle')
+}
+</script>
 
 <template>
-  <div class="table-column-container">
+  <div class="table-column-container" @click="closeDrawer()">
     <slot />
   </div>
 </template>

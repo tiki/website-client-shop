@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import ContentHeader from './ContentHeader.vue'
 
-defineProps({
+const props = defineProps({
   title: {
     type: String,
     required: true
@@ -9,16 +9,29 @@ defineProps({
   subtitle: {
     type: String,
     required: true
+  },
+  isOpen: {
+    type: Boolean,
+    required: true
   }
 })
 
-defineEmits(['toggle'])
+const emit = defineEmits(['toggle'])
+
+const closeDrawer = () => {
+  if (props.isOpen) emit('toggle')
+}
 </script>
 
 <template>
   <div class="content-column-container">
-    <content-header :title="title" :subtitle="subtitle" @toggle="$emit('toggle')" />
-    <div class="slot-container">
+    <content-header
+      :title="title"
+      :subtitle="subtitle"
+      @toggle="$emit('toggle')"
+      :is-open="isOpen"
+    />
+    <div class="slot-container" @click="closeDrawer()">
       <slot />
     </div>
   </div>

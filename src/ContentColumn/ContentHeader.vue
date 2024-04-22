@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import MenuIcon from '../Icons/MenuIcon.vue'
-defineProps({
+
+const props = defineProps({
   title: {
     type: String,
     required: true
@@ -8,21 +9,29 @@ defineProps({
   subtitle: {
     type: String,
     required: true
+  },
+  isOpen: {
+    type: Boolean,
+    required: true
   }
 })
 
-defineEmits(['toggle'])
+const emit = defineEmits(['toggle'])
+
+const closeDrawer = () => {
+  if (props.isOpen) emit('toggle')
+}
 </script>
 
 <template>
   <div class="container">
     <div class="title-button-container">
-      <h1>{{ title }}</h1>
+      <h1 @click="closeDrawer()">{{ title }}</h1>
       <button class="menu-button" @click="$emit('toggle')">
         <menu-icon />
       </button>
     </div>
-    <h2>
+    <h2 @click="closeDrawer()">
       {{ subtitle }}
     </h2>
     <hr />

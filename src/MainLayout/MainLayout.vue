@@ -68,11 +68,12 @@ const closeDrawer = () => {
       :title="`${route.title}: ${route.route}`"
       :subtitle="handleSubtitle"
       @toggle="isOpen = !isOpen"
+      :isOpen="isOpen"
     >
       <component :is="componentHandler"></component>
     </content-column>
 
-    <third-column @click="closeDrawer()">
+    <third-column @click="closeDrawer()" :isOpen="isOpen">
       <component :is="thirdColumnHandler" :table="route.route"></component>
     </third-column>
   </div>
