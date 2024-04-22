@@ -71,4 +71,10 @@ const thirdColumnHandler = computed(() => {
 .container {
   display: flex;
 }
+
+@media (max-width: 1279px) {
+  .container {
+    flex-direction: column;
+  }
+}
 </style>

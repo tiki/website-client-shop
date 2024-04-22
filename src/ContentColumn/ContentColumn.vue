@@ -36,4 +36,11 @@ defineProps({
 .slot-container {
   margin-top: 2em;
 }
+
+@media (max-width: 1279px) {
+  .content-column-container {
+    width: 100%;
+    height: auto;
+  }
+}
 </style>

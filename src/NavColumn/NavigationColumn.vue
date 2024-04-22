@@ -33,5 +33,10 @@ defineProps({
   margin-top: 2em;
   padding: 0 2em;
 }
+
+@media (max-width: 1279px) {
+  .nav-column-container {
+    display: none;
+  }
+}
 </style>
-../router
