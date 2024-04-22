@@ -18,7 +18,7 @@ defineProps({
 </script>
 
 <template>
-  <div class="nav-column-container" v-if="isOpen">
+  <div class="nav-column-container" v-show="isOpen">
     <nav-header />
     <nav-section
       :nav-section="navigationList"
