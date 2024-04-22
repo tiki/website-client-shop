@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import MenuIcon from '../Icons/MenuIcon.vue'
+import { ref } from 'vue'
 
 const props = defineProps({
   title: {
@@ -19,15 +20,19 @@ const props = defineProps({
 const emit = defineEmits(['toggle'])
 
 const closeDrawer = () => {
-  if (props.isOpen) emit('toggle')
+  if (props.isOpen && window.outerWidth < 1280) emit('toggle')
 }
+
+const width = ref<number>(window.outerWidth)
+
+console.log(width.value)
 </script>
 
 <template>
   <div class="container">
     <div class="title-button-container">
       <h1 @click="closeDrawer()">{{ title }}</h1>
-      <button class="menu-button" @click="$emit('toggle')">
+      <button class="menu-button" @click="$emit('toggle')" v-if="width < 1280">
         <menu-icon />
       </button>
     </div>

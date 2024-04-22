@@ -19,7 +19,7 @@ const props = defineProps({
 const emit = defineEmits(['toggle'])
 
 const closeDrawer = () => {
-  if (props.isOpen) emit('toggle')
+  if (props.isOpen && window.outerWidth < 1280) emit('toggle')
 }
 </script>
 

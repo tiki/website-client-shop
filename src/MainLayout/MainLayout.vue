@@ -2,7 +2,7 @@
 import NavigationColumn from '../NavColumn/NavigationColumn.vue'
 import ContentColumn from '../ContentColumn/ContentColumn.vue'
 import TableColumn from '../TableColumn/TableColumn.vue'
-import { computed, onMounted, ref } from 'vue'
+import { computed, onMounted, ref, watch } from 'vue'
 import type { selectedRoute } from '../NavColumn/types/selectedRoute'
 import DatasetGrid from '../DatasetContent/DatasetGrid.vue'
 import LegalComplianceContainer from '../LegalCompliance/LegalComplianceContent.vue'
@@ -45,11 +45,11 @@ const thirdColumnHandler = computed(() => {
   }
 })
 const isOpen = ref<boolean>(false)
+const width = ref<number>(window.outerWidth)
 
 const closeDrawer = () => {
-  if (isOpen.value === true) isOpen.value = false
+  if (isOpen.value === true && width.value < 1280) isOpen.value = false
 }
-
 onMounted(() => {
   if (window.outerWidth >= 1280) isOpen.value = true
 })
