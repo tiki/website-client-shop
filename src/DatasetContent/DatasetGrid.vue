@@ -410,4 +410,13 @@ onMounted(() => {
   align-items: center;
   justify-content: center;
 }
+
+@media (max-width: 960px) {
+  #dataset-first-grid-container {
+    grid-template-columns: 100%;
+  }
+  #dataset-last-grid-container {
+    grid-template-columns: 100%;
+  }
+}
 </style>

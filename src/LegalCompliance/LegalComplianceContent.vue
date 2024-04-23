@@ -48,4 +48,13 @@ const trailInfo = [
   display: flex;
   flex-direction: column;
 }
+
+@media (max-width: 1279px) {
+  .legal-compliance-container {
+    flex-direction: column;
+    gap: 1em;
+    justify-content: center;
+    align-items: center;
+  }
+}
 </style>

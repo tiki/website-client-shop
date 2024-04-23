@@ -33,7 +33,8 @@ defineProps({
   border-right: 1px solid #00000010;
   display: flex;
   flex-direction: column;
-  width: 20%;
+  /* width: 20%; */
+  max-width: 230px;
   margin-top: 2em;
   padding: 0 2em;
 }
