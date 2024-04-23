@@ -191,166 +191,166 @@ const chartsData: ChartData[][] = [
         }
       ]
     }
-  ],
-  [
-    {
-      width: 15,
-      height: 15,
-      type: 'line',
-      labels: ['Red', 'Blue', 'Yellow'],
-      datasets: [
-        {
-          label: 'My First Dataset',
-          data: [
-            {
-              x: -10,
-              y: 0
-            },
-            {
-              x: 0,
-              y: 10
-            },
-            {
-              x: 10,
-              y: 5
-            },
-            {
-              x: 0.5,
-              y: 5.5
-            }
-          ],
-          borderColor: '#00b27250',
-          backgroundColor: '#00b27250'
-        }
-      ]
-    },
-    {
-      width: 15,
-      height: 15,
-      type: 'line',
-      labels: ['Red', 'Blue', 'Yellow'],
-      datasets: [
-        {
-          label: 'My First Dataset',
-          data: [
-            {
-              x: -10,
-              y: 0
-            },
-            {
-              x: 0,
-              y: 10
-            },
-            {
-              x: 10,
-              y: 5
-            },
-            {
-              x: 0.5,
-              y: 5.5
-            }
-          ],
-          borderColor: '#00b27250',
-          backgroundColor: '#00b27250'
-        }
-      ]
-    },
-    {
-      width: 15,
-      height: 15,
-      type: 'line',
-      labels: ['Red', 'Blue', 'Yellow'],
-      datasets: [
-        {
-          label: 'My First Dataset',
-          data: [
-            {
-              x: -10,
-              y: 0
-            },
-            {
-              x: 0,
-              y: 10
-            },
-            {
-              x: 10,
-              y: 5
-            },
-            {
-              x: 0.5,
-              y: 5.5
-            }
-          ],
-          borderColor: '#00b27250',
-          backgroundColor: '#00b27250'
-        }
-      ]
-    },
-    {
-      width: 15,
-      height: 15,
-      type: 'line',
-      labels: ['Red', 'Blue', 'Yellow'],
-      datasets: [
-        {
-          label: 'My First Dataset',
-          data: [
-            {
-              x: -10,
-              y: 0
-            },
-            {
-              x: 0,
-              y: 10
-            },
-            {
-              x: 10,
-              y: 5
-            },
-            {
-              x: 0.5,
-              y: 5.5
-            }
-          ],
-          borderColor: '#00b27250',
-          backgroundColor: '#00b27250'
-        }
-      ]
-    }
-  ],
-  [
-    {
-      width: 15,
-      height: 15,
-      type: 'line',
-      labels: ['Red', 'Blue', 'Yellow'],
-      datasets: [
-        {
-          label: 'My First Dataset',
-          data: [
-            {
-              x: -10,
-              y: 0
-            },
-            {
-              x: 0,
-              y: 10
-            },
-            {
-              x: 10,
-              y: 5
-            },
-            {
-              x: 0.5,
-              y: 5.5
-            }
-          ],
-          borderColor: '#00b27250',
-          backgroundColor: '#00b27250'
-        }
-      ]
-    }
   ]
+  // [
+  //   {
+  //     width: 15,
+  //     height: 15,
+  //     type: 'line',
+  //     labels: ['Red', 'Blue', 'Yellow'],
+  //     datasets: [
+  //       {
+  //         label: 'My First Dataset',
+  //         data: [
+  //           {
+  //             x: -10,
+  //             y: 0
+  //           },
+  //           {
+  //             x: 0,
+  //             y: 10
+  //           },
+  //           {
+  //             x: 10,
+  //             y: 5
+  //           },
+  //           {
+  //             x: 0.5,
+  //             y: 5.5
+  //           }
+  //         ],
+  //         borderColor: '#00b27250',
+  //         backgroundColor: '#00b27250'
+  //       }
+  //     ]
+  //   },
+  //   {
+  //     width: 15,
+  //     height: 15,
+  //     type: 'line',
+  //     labels: ['Red', 'Blue', 'Yellow'],
+  //     datasets: [
+  //       {
+  //         label: 'My First Dataset',
+  //         data: [
+  //           {
+  //             x: -10,
+  //             y: 0
+  //           },
+  //           {
+  //             x: 0,
+  //             y: 10
+  //           },
+  //           {
+  //             x: 10,
+  //             y: 5
+  //           },
+  //           {
+  //             x: 0.5,
+  //             y: 5.5
+  //           }
+  //         ],
+  //         borderColor: '#00b27250',
+  //         backgroundColor: '#00b27250'
+  //       }
+  //     ]
+  //   },
+  //   {
+  //     width: 15,
+  //     height: 15,
+  //     type: 'line',
+  //     labels: ['Red', 'Blue', 'Yellow'],
+  //     datasets: [
+  //       {
+  //         label: 'My First Dataset',
+  //         data: [
+  //           {
+  //             x: -10,
+  //             y: 0
+  //           },
+  //           {
+  //             x: 0,
+  //             y: 10
+  //           },
+  //           {
+  //             x: 10,
+  //             y: 5
+  //           },
+  //           {
+  //             x: 0.5,
+  //             y: 5.5
+  //           }
+  //         ],
+  //         borderColor: '#00b27250',
+  //         backgroundColor: '#00b27250'
+  //       }
+  //     ]
+  //   },
+  //   {
+  //     width: 15,
+  //     height: 15,
+  //     type: 'line',
+  //     labels: ['Red', 'Blue', 'Yellow'],
+  //     datasets: [
+  //       {
+  //         label: 'My First Dataset',
+  //         data: [
+  //           {
+  //             x: -10,
+  //             y: 0
+  //           },
+  //           {
+  //             x: 0,
+  //             y: 10
+  //           },
+  //           {
+  //             x: 10,
+  //             y: 5
+  //           },
+  //           {
+  //             x: 0.5,
+  //             y: 5.5
+  //           }
+  //         ],
+  //         borderColor: '#00b27250',
+  //         backgroundColor: '#00b27250'
+  //       }
+  //     ]
+  //   }
+  // ],
+  // [
+  //   {
+  //     width: 15,
+  //     height: 15,
+  //     type: 'line',
+  //     labels: ['Red', 'Blue', 'Yellow'],
+  //     datasets: [
+  //       {
+  //         label: 'My First Dataset',
+  //         data: [
+  //           {
+  //             x: -10,
+  //             y: 0
+  //           },
+  //           {
+  //             x: 0,
+  //             y: 10
+  //           },
+  //           {
+  //             x: 10,
+  //             y: 5
+  //           },
+  //           {
+  //             x: 0.5,
+  //             y: 5.5
+  //           }
+  //         ],
+  //         borderColor: '#00b27250',
+  //         backgroundColor: '#00b27250'
+  //       }
+  //     ]
+  //   }
+  // ]
 ]
 
 const stats: Stats = {
@@ -409,5 +409,14 @@ onMounted(() => {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+@media (max-width: 960px) {
+  #dataset-first-grid-container {
+    grid-template-columns: 100%;
+  }
+  #dataset-last-grid-container {
+    grid-template-columns: 100%;
+  }
 }
 </style>

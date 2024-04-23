@@ -6,6 +6,10 @@ import type { Route } from './types/route'
 import type { selectedRoute } from './types/selectedRoute'
 
 defineProps({
+  isOpen: {
+    required: true,
+    type: Boolean
+  },
   navigationList: {
     required: true,
     type: Object as PropType<Route[]>
@@ -14,7 +18,7 @@ defineProps({
 </script>
 
 <template>
-  <div class="nav-column-container">
+  <div class="nav-column-container" v-show="isOpen">
     <nav-header />
     <nav-section
       :nav-section="navigationList"
@@ -29,9 +33,20 @@ defineProps({
   border-right: 1px solid #00000010;
   display: flex;
   flex-direction: column;
-  width: 20%;
+  /* width: 20%; */
+  max-width: 230px;
   margin-top: 2em;
   padding: 0 2em;
 }
+
+@media (max-width: 1279px) {
+  .nav-column-container {
+    top: 0;
+    right: 0;
+    position: fixed;
+    margin-top: 0;
+    background-color: #fff;
+    overflow-y: scroll;
+  }
+}
 </style>
-../router

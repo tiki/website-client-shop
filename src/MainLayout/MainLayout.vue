@@ -2,7 +2,7 @@
 import NavigationColumn from '../NavColumn/NavigationColumn.vue'
 import ContentColumn from '../ContentColumn/ContentColumn.vue'
 import TableColumn from '../TableColumn/TableColumn.vue'
-import { computed, ref } from 'vue'
+import { computed, onMounted, ref, watch } from 'vue'
 import type { selectedRoute } from '../NavColumn/types/selectedRoute'
 import DatasetGrid from '../DatasetContent/DatasetGrid.vue'
 import LegalComplianceContainer from '../LegalCompliance/LegalComplianceContent.vue'
@@ -44,10 +44,19 @@ const thirdColumnHandler = computed(() => {
       return DataSourceAgreement
   }
 })
+const isOpen = ref<boolean>(false)
+const width = ref<number>(window.outerWidth)
+
+const closeDrawer = () => {
+  if (isOpen.value === true && width.value < 1280) isOpen.value = false
+}
+onMounted(() => {
+  if (window.outerWidth >= 1280) isOpen.value = true
+})
 </script>
 
 <template>
-  <div class="container">
+  <div class="container" :class="isOpen ? 'content-layer' : ''">
     <navigation-column
       @route="
         (routeName: selectedRoute) => {
@@ -55,13 +64,19 @@ const thirdColumnHandler = computed(() => {
         }
       "
       :navigationList="navigationList"
+      :isOpen="isOpen"
     />
 
-    <content-column :title="`${route.title}: ${route.route}`" :subtitle="handleSubtitle">
+    <content-column
+      :title="`${route.title}: ${route.route}`"
+      :subtitle="handleSubtitle"
+      @toggle="isOpen = !isOpen"
+      :isOpen="isOpen"
+    >
       <component :is="componentHandler"></component>
     </content-column>
 
-    <third-column>
+    <third-column @click="closeDrawer()" :isOpen="isOpen">
       <component :is="thirdColumnHandler" :table="route.route"></component>
     </third-column>
   </div>
@@ -70,5 +85,16 @@ const thirdColumnHandler = computed(() => {
 <style scoped>
 .container {
   display: flex;
+}
+
+@media (max-width: 1279px) {
+  .container {
+    flex-direction: column;
+    position: relative;
+  }
+
+  .content-layer {
+    background-color: #00000090;
+  }
 }
 </style>
