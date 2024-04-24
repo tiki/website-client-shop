@@ -39,13 +39,14 @@ const closeDrawer = () => {
 
 <style scoped>
 .content-column-container {
-  height: 100vh;
   border-right: 1px solid #00000010;
   display: flex;
   flex-direction: column;
-  width: 50%;
-  margin-top: 5em;
-  padding: 0 3em;
+  width: 50rem;
+  padding: 3rem 1.6875rem;
+  gap: 0.5rem;
+  align-items: flex-start;
+  align-self: stretch;
 }
 
 .slot-container {
