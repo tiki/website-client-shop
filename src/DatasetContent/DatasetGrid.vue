@@ -192,165 +192,6 @@ const chartsData: ChartData[][] = [
       ]
     }
   ]
-  // [
-  //   {
-  //     width: 15,
-  //     height: 15,
-  //     type: 'line',
-  //     labels: ['Red', 'Blue', 'Yellow'],
-  //     datasets: [
-  //       {
-  //         label: 'My First Dataset',
-  //         data: [
-  //           {
-  //             x: -10,
-  //             y: 0
-  //           },
-  //           {
-  //             x: 0,
-  //             y: 10
-  //           },
-  //           {
-  //             x: 10,
-  //             y: 5
-  //           },
-  //           {
-  //             x: 0.5,
-  //             y: 5.5
-  //           }
-  //         ],
-  //         borderColor: '#00b27250',
-  //         backgroundColor: '#00b27250'
-  //       }
-  //     ]
-  //   },
-  //   {
-  //     width: 15,
-  //     height: 15,
-  //     type: 'line',
-  //     labels: ['Red', 'Blue', 'Yellow'],
-  //     datasets: [
-  //       {
-  //         label: 'My First Dataset',
-  //         data: [
-  //           {
-  //             x: -10,
-  //             y: 0
-  //           },
-  //           {
-  //             x: 0,
-  //             y: 10
-  //           },
-  //           {
-  //             x: 10,
-  //             y: 5
-  //           },
-  //           {
-  //             x: 0.5,
-  //             y: 5.5
-  //           }
-  //         ],
-  //         borderColor: '#00b27250',
-  //         backgroundColor: '#00b27250'
-  //       }
-  //     ]
-  //   },
-  //   {
-  //     width: 15,
-  //     height: 15,
-  //     type: 'line',
-  //     labels: ['Red', 'Blue', 'Yellow'],
-  //     datasets: [
-  //       {
-  //         label: 'My First Dataset',
-  //         data: [
-  //           {
-  //             x: -10,
-  //             y: 0
-  //           },
-  //           {
-  //             x: 0,
-  //             y: 10
-  //           },
-  //           {
-  //             x: 10,
-  //             y: 5
-  //           },
-  //           {
-  //             x: 0.5,
-  //             y: 5.5
-  //           }
-  //         ],
-  //         borderColor: '#00b27250',
-  //         backgroundColor: '#00b27250'
-  //       }
-  //     ]
-  //   },
-  //   {
-  //     width: 15,
-  //     height: 15,
-  //     type: 'line',
-  //     labels: ['Red', 'Blue', 'Yellow'],
-  //     datasets: [
-  //       {
-  //         label: 'My First Dataset',
-  //         data: [
-  //           {
-  //             x: -10,
-  //             y: 0
-  //           },
-  //           {
-  //             x: 0,
-  //             y: 10
-  //           },
-  //           {
-  //             x: 10,
-  //             y: 5
-  //           },
-  //           {
-  //             x: 0.5,
-  //             y: 5.5
-  //           }
-  //         ],
-  //         borderColor: '#00b27250',
-  //         backgroundColor: '#00b27250'
-  //       }
-  //     ]
-  //   }
-  // ],
-  // [
-  //   {
-  //     width: 15,
-  //     height: 15,
-  //     type: 'line',
-  //     labels: ['Red', 'Blue', 'Yellow'],
-  //     datasets: [
-  //       {
-  //         label: 'My First Dataset',
-  //         data: [
-  //           {
-  //             x: -10,
-  //             y: 0
-  //           },
-  //           {
-  //             x: 0,
-  //             y: 10
-  //           },
-  //           {
-  //             x: 10,
-  //             y: 5
-  //           },
-  //           {
-  //             x: 0.5,
-  //             y: 5.5
-  //           }
-  //         ],
-  //         borderColor: '#00b27250',
-  //         backgroundColor: '#00b27250'
-  //       }
-  //     ]
-  //   }
-  // ]
 ]
 
 const stats: Stats = {
@@ -359,8 +200,8 @@ const stats: Stats = {
   years: '3.1',
   contains: [
     'in-store purchases',
-    'ecommerce purchases',
     'sku-level receipts',
+    'ecommerce purchases',
     'Card transactions'
   ],
   approved_for: ['Analytics', 'Advertising', 'AI Training', 'Personalization']
@@ -376,8 +217,10 @@ onMounted(() => {
     <dataset-stats :stats="stats" />
     <div id="first-chart-container">
       <div id="chart-button-container"></div>
-      <custom-button :button-text="'Compliance Report'" :state="ButtonState.OUTLINED" />
-      <custom-button :button-text="'View Sample'" :state="ButtonState.FILLED" />
+      <div class="button-container">
+        <custom-button :button-text="'View Sample'" :state="ButtonState.FILLED" />
+        <custom-button :button-text="'Compliance Report'" :state="ButtonState.OUTLINED" />
+      </div>
     </div>
   </div>
 
@@ -418,5 +261,15 @@ onMounted(() => {
   #dataset-last-grid-container {
     grid-template-columns: 100%;
   }
+}
+.button-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  flex: 1 0 0;
+  margin-top: 1.5em;
+  align-self: stretch;
 }
 </style>
