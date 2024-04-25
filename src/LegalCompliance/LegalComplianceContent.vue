@@ -39,7 +39,10 @@ const trailInfo = [
 <style scoped>
 .legal-compliance-container {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 1.5rem;
+  align-self: stretch;
 }
 
 .chart-container {

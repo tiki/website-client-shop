@@ -243,7 +243,6 @@ onMounted(() => {
   display: flex;
   flex-direction: row;
   gap: 2em;
-  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
 }

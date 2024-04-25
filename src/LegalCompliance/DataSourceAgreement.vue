@@ -3,11 +3,13 @@ const datasets = [1, 2, 3]
 </script>
 
 <template>
-  <div>
+  <div class="container">
     <h1>DATA SOURCE AGREEMENTS</h1>
     <div class="agreement-checkbox-container" v-for="dataset in datasets" :key="dataset">
-      <input type="checkbox" :id="`${dataset}`" @click="console.log('test')" />
-      <label :for="`${dataset}`"></label>
+      <div class="checkbox-container">
+        <input type="checkbox" :id="`${dataset}`" @click="console.log('test')" />
+        <label :for="`${dataset}`"></label>
+      </div>
       <div class="odd-div">3,103,398 RECORDS</div>
       <span>APP 1</span>
     </div>
@@ -15,19 +17,42 @@ const datasets = [1, 2, 3]
 </template>
 
 <style scoped>
+.container {
+  display: flex;
+  padding: 1.125rem;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.625rem;
+  flex: 1 0 0;
+  align-self: stretch;
+}
+
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  padding: 0.375rem 0.625rem;
+  gap: 0.625rem;
+  align-self: stretch;
+}
+
 h1 {
-  font-size: 1em;
-  margin-bottom: 1em;
   color: var(--secondary-text-color);
-  font-weight: 600;
+  font-size: 0.6875rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  text-transform: uppercase;
 }
 
 input[type='checkbox'] + label {
   display: block;
-  width: 1.2em;
   height: 1.2em;
+  width: 0.6875rem;
+  height: 0.6875rem;
   border: 1px solid var(--accent-color);
-  border-radius: 0.25em;
+  border-radius: 0.1em;
   cursor: pointer;
 }
 input[type='checkbox']:checked + label:after {
@@ -35,7 +60,7 @@ input[type='checkbox']:checked + label:after {
   align-items: center;
   justify-content: center;
   content: '\2713';
-  font-size: 0.85em;
+  font-size: 0.65em;
   cursor: pointer;
   color: #00000090;
 }
@@ -48,20 +73,30 @@ input[type='checkbox'] {
   display: block;
   border-left: 1px solid #00000020;
   border-right: 1px solid #00000020;
-  padding: 0.5em 1em;
-  width: 35%;
+  padding: 0.375rem;
+  font-size: 0.6875rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }
 .agreement-checkbox-container {
   display: flex;
-  align-items: center;
-  justify-content: space-evenly;
   border: 1px solid #00000020;
-  border-radius: 0.5em;
-  margin-bottom: 1em;
+  border-radius: 0.25rem;
+  width: 100%;
 }
 
 .agreement-checkbox-container span {
-  text-decoration: underline;
-  width: 50%;
+  padding-left: 0.375rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0.375rem;
+  font-size: 0.6875rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-decoration-line: underline;
+  text-transform: uppercase;
 }
 </style>
