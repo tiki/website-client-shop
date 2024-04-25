@@ -42,7 +42,7 @@ const closeDrawer = () => {
   border-right: 1px solid #00000010;
   display: flex;
   flex-direction: column;
-  width: 50rem;
+  width: auto;
   padding: 3rem 1.6875rem;
   align-items: flex-start;
   align-self: stretch;

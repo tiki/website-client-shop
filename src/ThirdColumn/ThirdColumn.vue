@@ -22,15 +22,13 @@ const closeDrawer = () => {
 <style scoped>
 .table-column-container {
   height: 100vh;
-  width: 22.25rem;
-  /* margin-top: 1.5em; */
-  /* padding: 0 1.5em; */
+  min-width: 22.25rem;
 }
 
 @media (max-width: 1279px) {
   .table-column-container {
-    /* width: 100%; */
     height: auto;
+    max-width: 22.25rem;
   }
 }
 </style>
