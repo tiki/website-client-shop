@@ -52,12 +52,18 @@ p {
   text-transform: uppercase;
 }
 
+div,
+ul {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
 li {
   list-style-type: none;
   padding: 0.21875rem 0.5625rem;
   display: flex;
   align-items: center;
-  margin: 0.75em 0;
   cursor: pointer;
   font-size: 0.6875em;
   font-weight: 400;

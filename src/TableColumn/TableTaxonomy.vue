@@ -29,11 +29,11 @@ const checkTable = () => {
           <span class="table-cell-type">
             {{ data.data }}
           </span>
-          <span class="table-cell-description"
-            >Table Description: Transaction Category Level 1: SHOPS</span
-          >
+          <span class="table-cell-type">{{ data.type }}</span>
         </div>
-        <span class="table-cell-type">{{ data.type }}</span>
+        <span class="table-cell-description"
+          >Table Description: Transaction Category Level 1: SHOPS</span
+        >
       </li>
     </ul>
   </div>
@@ -49,6 +49,10 @@ const checkTable = () => {
   align-self: stretch;
 }
 
+ul {
+  width: 100%;
+}
+
 h2 {
   color: var(--secondary-text-color);
   font-size: 0.6875rem;
@@ -60,21 +64,29 @@ h2 {
 li {
   list-style-type: none;
   display: flex;
-  justify-content: space-between;
-  margin-bottom: 0.6em;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.25rem;
+  align-self: stretch;
+  width: 100%;
 }
-
-.table-cell-type {
-  font-weight: 300;
-}
-
 .table-cell-container {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  align-self: stretch;
+  font-size: 0.6875rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-transform: lowercase;
 }
 
 .table-cell-description {
   color: color-mix(in srgb, var(--primary-text-color) 50%, transparent);
-  font-size: 0.85em;
+  font-size: 0.5625rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }
 </style>
