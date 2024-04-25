@@ -11,7 +11,7 @@ defineProps({
 </script>
 
 <template>
-  <div>
+  <div class="container">
     <h1>AUDIT TRAIL</h1>
     <table>
       <thead>
@@ -33,19 +33,39 @@ defineProps({
 </template>
 
 <style scoped>
+.container {
+  display: flex;
+  height: 29.25rem;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.75rem;
+  align-self: stretch;
+}
 h1 {
-  font-size: 1em;
-  margin-bottom: 1em;
   color: var(--primary-text-color);
-  font-weight: 600;
+  font-size: 0.6875rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  text-transform: uppercase;
 }
 
 td,
 th {
-  padding: 0.2em 1em;
   border-bottom: 1px solid #00000020;
   text-align: center;
+  font-size: 0.6875rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
   text-transform: uppercase;
+  width: 6.25rem;
+  padding: 0.25rem 0.6875rem;
+  gap: 0.625rem;
+}
+
+th {
+  font-weight: 700;
 }
 
 tbody tr:last-of-type td {

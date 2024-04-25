@@ -31,12 +31,19 @@ const buttonStateClass = computed(() => {
 <style scoped>
 .custom-button {
   cursor: pointer;
-  padding: 1em 1em;
-  border: 1px solid #00000020;
-  border-radius: 0.65em;
-  width: 40%;
-  margin: 1em 0;
-  text-transform: Uppercase;
+  display: flex;
+  width: 10.3125rem;
+  padding: 0.625rem 1.25rem;
+  justify-content: center;
+  align-items: center;
+  gap: 0.625rem;
+  border-radius: 0.375rem;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  font-size: 0.6875rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-transform: uppercase;
 }
 
 .filled-button {

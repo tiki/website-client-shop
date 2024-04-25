@@ -47,24 +47,29 @@ console.log(width.value)
 .container {
   display: flex;
   flex-direction: column;
+  gap: 0.5rem;
 }
 
 h1 {
   color: var(--primary-text-color);
   font-weight: 600;
   text-transform: capitalize;
+  font-size: 1.6875rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
 }
 
 h2 {
   color: var(--secondary-text-color);
-  font-size: 1em;
-  font-weight: 300;
-  margin-top: 0.5em;
-  line-height: 1.3em;
+  font-size: 0.89063rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }
 
 hr {
-  margin-top: 1.5em;
+  margin-top: 1.5rem;
   border-top: 1px solid #00000010;
 }
 

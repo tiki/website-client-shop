@@ -14,9 +14,10 @@ window.addEventListener('keydown', (event) => {
 <style scoped>
 input {
   padding: 0.65em 0.5em;
-  width: 100%;
-  border-radius: 0.5em;
-  border: 0.15em solid rgba(0, 0, 0, 0.6);
+  padding: 0.375em;
+  width: 139px;
+  border-radius: 0.3125em;
+  border: 1px solid #000;
   background: url('src/assets/searchBarSuffix.svg') no-repeat scroll 95% 50%;
   margin-top: 2em;
   margin-bottom: 0.5em;
@@ -24,5 +25,10 @@ input {
 
 input::placeholder {
   color: var(--primary-text-color);
+  font-size: 0.6875rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  font-family: var(--theme-font-family);
 }
 </style>

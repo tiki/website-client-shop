@@ -45,19 +45,28 @@ onMounted(() => {
 
 <style scoped>
 p {
-  font-weight: bold;
-  font-size: 0.9em;
-  margin-top: 2em;
+  font-weight: 700;
+  font-size: 0.6875em;
+  margin-top: 2rem;
   color: var(--primary-text-color);
   text-transform: uppercase;
 }
 
+div,
+ul {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
 li {
   list-style-type: none;
-  padding: 0.3em 0 0.3em 1em;
-  margin: 0.75em 0;
+  padding: 0.21875rem 0.5625rem;
+  display: flex;
+  align-items: center;
   cursor: pointer;
-  font-size: 0.9em;
+  font-size: 0.6875em;
+  font-weight: 400;
   color: var(--primary-text-color);
 }
 
@@ -65,6 +74,6 @@ li:hover,
 .selected-route {
   color: var(--accent-color);
   background-color: color-mix(in srgb, currentColor 10%, transparent);
-  border-radius: 0.5em;
+  border-radius: 0.1875em;
 }
 </style>

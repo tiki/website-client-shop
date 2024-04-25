@@ -35,41 +35,61 @@ defineProps({
 </template>
 
 <style scoped>
+.dataset-stats-container {
+  display: flex;
+  padding: 0.75rem 0rem;
+  flex-direction: column;
+  align-items: flex-start;
+  flex: 1 0 0;
+  gap: 0.75rem;
+  align-self: stretch;
+}
+
+.stats-list {
+  gap: 0.75rem;
+  display: flex;
+  flex-direction: column;
+}
 .stat-item {
   display: flex;
-  justify-content: space-between;
-  padding-right: 2em;
-  margin: 1em 0;
   color: var(--primary-text-color);
+  font-size: 0.6875rem;
+  font-style: normal;
+  font-weight: 400;
 }
 
 .stat-item span,
 .tags-container span {
-  font-weight: 600;
+  font-weight: 700;
   text-transform: uppercase;
   color: var(--primary-text-color);
+  font-size: 0.6875rem;
+  width: 6.25rem;
 }
 
 .tags-list {
   display: flex;
-  flex-flow: wrap;
-  gap: 0.5em;
-}
-
-.tags-container {
-  margin: 1em 0;
+  padding: 0.375rem;
+  align-items: flex-start;
+  align-content: flex-start;
+  gap: 0.5625rem;
+  align-self: stretch;
+  flex-wrap: wrap;
 }
 
 .contain-item {
   color: var(--primary-text-color);
   display: flex;
+  border-radius: 6.25rem;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  display: flex;
+  padding: 0.25rem 0.5rem;
+  justify-content: center;
   align-items: center;
-  font-size: 0.85em;
-  text-align: center;
-  border: 1px solid #00000020;
-  padding: 0.5em;
-  border-radius: 2em;
+  font-size: 0.6875rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
   text-transform: uppercase;
-  margin-top: 1em;
 }
 </style>

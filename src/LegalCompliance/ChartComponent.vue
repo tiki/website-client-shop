@@ -68,12 +68,18 @@ onMounted(() => {
   border: 1px solid #00000020;
   margin-bottom: 1em;
   border-radius: 0.3em;
-  padding: 1em;
 }
 h1 {
-  font-size: 1em;
-  margin-bottom: 1em;
-  color: var(--primary-text-color);
+  display: flex;
+  padding: 0.75rem;
+  align-items: flex-start;
+  gap: 1.4375rem;
+  align-self: stretch;
+  font-size: 0.6875rem;
+  font-style: normal;
   font-weight: 400;
+  line-height: normal;
+  text-transform: uppercase;
+  color: var(--primary-text-color);
 }
 </style>
