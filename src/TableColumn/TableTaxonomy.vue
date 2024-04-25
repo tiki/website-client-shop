@@ -40,11 +40,22 @@ const checkTable = () => {
 </template>
 
 <style scoped>
+.table-taxonomy-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.625rem;
+  flex: 1 0 0;
+  align-self: stretch;
+}
+
 h2 {
-  font-size: 1em;
-  margin-bottom: 0.5em;
   color: var(--secondary-text-color);
-  font-weight: 500;
+  font-size: 0.6875rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  text-transform: uppercase;
 }
 li {
   list-style-type: none;

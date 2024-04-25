@@ -44,13 +44,12 @@ const closeDrawer = () => {
   flex-direction: column;
   width: 50rem;
   padding: 3rem 1.6875rem;
-  gap: 0.5rem;
   align-items: flex-start;
   align-self: stretch;
 }
 
 .slot-container {
-  margin-top: 2em;
+  margin-top: 1.5rem;
 }
 
 @media (max-width: 1279px) {

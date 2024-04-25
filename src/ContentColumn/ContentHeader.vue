@@ -47,6 +47,7 @@ console.log(width.value)
 .container {
   display: flex;
   flex-direction: column;
+  gap: 0.5rem;
 }
 
 h1 {
@@ -68,7 +69,7 @@ h2 {
 }
 
 hr {
-  margin-top: 1.5em;
+  margin-top: 1.5rem;
   border-top: 1px solid #00000010;
 }
 

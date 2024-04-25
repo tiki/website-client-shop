@@ -11,10 +11,20 @@ defineProps({
 </script>
 
 <template>
-  <div>
+  <div class="table-column">
     <table-column-header :table="table" />
     <table-taxonomy :table="table" />
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.table-column {
+  display: flex;
+  padding: 1.125rem;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2rem;
+  flex: 1 0 0;
+  align-self: stretch;
+}
+</style>
