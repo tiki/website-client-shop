@@ -7,6 +7,7 @@ repository:
   description: Launch a branded data storefront
   topics: web, monetization
   private: false
+  has_issues: true
   has_projects: true
   has_discussions: false
 
