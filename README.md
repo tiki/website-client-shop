@@ -1,45 +1,14 @@
-# data-store-whitelabel
+# Monetization: Storefront
+Brand a self-service storefront for customers to source, test, and integrate your unique datasets. Generate beautiful docs. No cumbersome exports. Customers just connect their tools and pay for what they use.
 
-This template should help get you started developing with Vue 3 in Vite.
+## How to Use
+We're in private beta. You can [apply](https://rxsny9wwvhn.typeform.com/to/I65tT0sm?typeform-source=mytiki.com) for early discounted access and participation in our 90-day launch cohort.
 
-## Recommended IDE Setup
+## Contributing
+Please review our [Contributor Guidelines](https://github.com/mytiki/.github/blob/main/CONTRIBUTING.md) before beginning. Utilize GitHub Issues, Discussions, and Security Advisories to provide feedback.
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+- [Ask a Question](https://github.com/orgs/mytiki/discussions)
+- [Report a Bug](https://github.com/mytiki/roadmap/issues/new?assignees=&labels=bug%2Crequest&projects=&template=bug.yml)
+- [Report a Vulnerability](https://github.com/mytiki/platform-mon-storefront/security/advisories/new)
+- [Request a Feature](https://github.com/mytiki/roadmap/issues/new?assignees=&labels=feature%2Crequest&projects=&template=feature.yml)
 
-## Type Support for `.vue` Imports in TS
-
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
-
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Type-Check, Compile and Minify for Production
-
-```sh
-npm run build
-```
-
-### Run Unit Tests with [Vitest](https://vitest.dev/)
-
-```sh
-npm run test:unit
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
