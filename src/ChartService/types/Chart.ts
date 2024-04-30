@@ -7,7 +7,7 @@ interface Axis {
 }
 interface Dataset {
   label: string
-  data: string | number[] | Axis[]
+  data: string[] | number[] | Axis[]
   backgroundColor?: string | string[]
   borderColor?: string
   color?: string
@@ -15,7 +15,7 @@ interface Dataset {
 }
 
 export interface ChartData {
-  type: ChartType
+  type?: ChartType
   labels: (string | number)[]
   datasets: Dataset[]
   width?: number

@@ -2,26 +2,25 @@ import { type ChartData } from './types/Chart'
 import { Chart } from 'chart.js/auto'
 
 export default class ChartService {
-  public static renderLegalComplianceChart(Charts: ChartData[], firstContainerId: string) {
+  public static renderLegalComplianceChart(chart: ChartData, firstContainerId: string) {
     const firstContainer = document.getElementById(firstContainerId!)
-    Charts?.forEach((chart) => {
-      const newCanva = document.createElement('canvas')
-      newCanva.id = `${window.crypto.randomUUID()}`
-      newCanva.width = 200
-      newCanva.height = 200
 
-      const newDiv = document.createElement('div')
-      firstContainer?.appendChild(newDiv)
+    const newCanva = document.createElement('canvas')
+    newCanva.id = `${window.crypto.randomUUID()}`
+    newCanva.width = 200
+    newCanva.height = 200
 
-      newDiv.appendChild(newCanva)
+    const newDiv = document.createElement('div')
+    firstContainer?.appendChild(newDiv)
 
-      new Chart(newCanva.id, {
-        type: chart.type,
-        data: {
-          labels: chart.labels,
-          datasets: chart.datasets
-        }
-      })
+    newDiv.appendChild(newCanva)
+
+    new Chart(newCanva.id, {
+      type: 'doughnut',
+      data: {
+        labels: chart.labels,
+        datasets: chart.datasets
+      }
     })
   }
 
@@ -59,7 +58,7 @@ export default class ChartService {
       firstContainer?.appendChild(newDiv)
       newDiv?.appendChild(newCanva)
       new Chart(newCanva.id, {
-        type: chart.type,
+        type: chart.type!,
         data: {
           labels: chart.labels,
           datasets: chart.datasets
@@ -136,7 +135,7 @@ export default class ChartService {
     slotDiv?.appendChild(newDiv)
     newDiv?.appendChild(newCanva)
     new Chart(newCanva.id, {
-      type: chart.type,
+      type: chart.type!,
       data: {
         labels: chart.labels,
         datasets: chart.datasets

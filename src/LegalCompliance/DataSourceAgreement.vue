@@ -1,17 +1,51 @@
 <script setup lang="ts">
-const datasets = [1, 2, 3]
+import type { PropType } from 'vue'
+import type DataSourceAgreementType from './types/DataSourceAgreementType'
+
+//fetch data
+const dataSourcesAgreements: DataSourceAgreementType[] = [
+  {
+    records: '3,103,398 RECORDS',
+    agreement: {
+      name: 'APP 1',
+      link: ''
+    }
+  },
+  {
+    records: '3,103,398 RECORDS',
+    agreement: {
+      name: 'APP 2',
+      link: ''
+    }
+  },
+  {
+    records: '3,103,398 RECORDS',
+    agreement: {
+      name: 'COMPANY.COM',
+      link: ''
+    }
+  }
+]
 </script>
 
 <template>
   <div class="container">
     <h1>DATA SOURCE AGREEMENTS</h1>
-    <div class="agreement-checkbox-container" v-for="dataset in datasets" :key="dataset">
+    <div
+      class="agreement-checkbox-container"
+      v-for="dataset in dataSourcesAgreements"
+      :key="dataset.agreement.name"
+    >
       <div class="checkbox-container">
-        <input type="checkbox" :id="`${dataset}`" @click="console.log('test')" />
-        <label :for="`${dataset}`"></label>
+        <input type="checkbox" :id="`${dataset.agreement.name}`" @click="console.log('test')" />
+        <label :for="`${dataset.agreement.name}`"></label>
       </div>
-      <div class="odd-div">3,103,398 RECORDS</div>
-      <span>APP 1</span>
+      <div class="odd-div">{{ dataset.records }}</div>
+      <span
+        ><a :href="dataset.agreement.link">
+          {{ dataset.agreement.name }}
+        </a></span
+      >
     </div>
   </div>
 </template>
@@ -98,5 +132,15 @@ input[type='checkbox'] {
   line-height: normal;
   text-decoration-line: underline;
   text-transform: uppercase;
+}
+
+a:link,
+a:visited,
+a:hover,
+a:active {
+  text-decoration: none;
+  color: inherit;
+  outline: 0;
+  cursor: pointer;
 }
 </style>
