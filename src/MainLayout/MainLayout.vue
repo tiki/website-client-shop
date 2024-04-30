@@ -1,49 +1,17 @@
 <script setup lang="ts">
 import NavigationColumn from '../NavColumn/NavigationColumn.vue'
 import ContentColumn from '../ContentColumn/ContentColumn.vue'
-import TableColumn from '../TableColumn/TableColumn.vue'
-import { computed, onMounted, ref, watch } from 'vue'
-import type { selectedRoute } from '../NavColumn/types/selectedRoute'
-import DatasetGrid from '../DatasetContent/DatasetGrid.vue'
-import LegalComplianceContainer from '../LegalCompliance/LegalComplianceContent.vue'
+import { onMounted, ref } from 'vue'
+import { type Route } from '@/router/types/route'
+import type { MainRouter } from '@/router/types/MainRouter'
 import ThirdColumn from '../ThirdColumn/ThirdColumn.vue'
-import DataSourceAgreement from '../LegalCompliance/DataSourceAgreement.vue'
 
-import Router from '../router'
+import Router from '../router/router'
 
-const datasetsRoutes = ['Transactions', 'Receipts', 'Demographics']
-const navigationList = Router.getRoutes(datasetsRoutes)
+const router: MainRouter[] = Router.getRoutes()
 
-const route = ref<selectedRoute>(Router.getInitialRoute())
+const selectedRoute = ref<Route>(Router.getInitialRoute())
 
-const componentHandler = computed(() => {
-  switch (route.value.route) {
-    case 'Legal Compliance':
-      return LegalComplianceContainer
-  }
-  return route.value.title === 'datasets' ? DatasetGrid : null
-})
-
-const handleSubtitle = computed(() => {
-  switch (route.value.route) {
-    case 'Legal Compliance':
-      return `All data provided is licensed directly from the legal owner. Review and select the agreements that meet your due-diligence criteria to get started. `
-    default:
-      return `This dataset contains purchase transaction information like the date, amount, merchant, type,
-      and location. Combine with demographics to build profiles against spend. See Taxonomy for all
-      available fields. Each record contains a standard userid which can be used to join
-      demographics to various other datasets, such as receipts and demographics.`
-  }
-})
-
-const thirdColumnHandler = computed(() => {
-  switch (true) {
-    case route.value.title === 'datasets':
-      return TableColumn
-    case route.value.route === 'Legal Compliance':
-      return DataSourceAgreement
-  }
-})
 const isOpen = ref<boolean>(false)
 const width = ref<number>(window.outerWidth)
 
@@ -59,25 +27,25 @@ onMounted(() => {
   <div class="container" :class="isOpen ? 'content-layer' : ''">
     <navigation-column
       @route="
-        (routeName: selectedRoute) => {
-          route = routeName
+        (route: Route) => {
+          selectedRoute = route
         }
       "
-      :navigationList="navigationList"
+      :navigationList="router"
       :isOpen="isOpen"
     />
 
     <content-column
-      :title="`${route.title}: ${route.route}`"
-      :subtitle="handleSubtitle"
+      :title="`${selectedRoute.type}: ${selectedRoute.route}`"
+      :subtitle="selectedRoute.subtitle"
       @toggle="isOpen = !isOpen"
       :isOpen="isOpen"
     >
-      <component :is="componentHandler"></component>
+      <component :is="selectedRoute.contentComponent"></component>
     </content-column>
 
     <third-column @click="closeDrawer()" :isOpen="isOpen">
-      <component :is="thirdColumnHandler" :table="route.route"></component>
+      <component :is="selectedRoute.thirdColumnComponent" :table="selectedRoute.route"></component>
     </third-column>
   </div>
 </template>
@@ -98,3 +66,4 @@ onMounted(() => {
   }
 }
 </style>
+../router/router ../router/types/selectedRoute

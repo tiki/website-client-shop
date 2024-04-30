@@ -2,8 +2,8 @@
 import NavSection from './NavSection.vue'
 import NavHeader from './NavHeader.vue'
 import type { PropType } from 'vue'
-import type { Route } from './types/route'
-import type { selectedRoute } from './types/selectedRoute'
+import { type Route } from '@/router/types/route'
+import { type MainRouter } from '@/router/types/MainRouter'
 
 defineProps({
   isOpen: {
@@ -12,7 +12,7 @@ defineProps({
   },
   navigationList: {
     required: true,
-    type: Object as PropType<Route[]>
+    type: Object as PropType<MainRouter[]>
   }
 })
 </script>
@@ -20,10 +20,7 @@ defineProps({
 <template>
   <div class="nav-column-container" v-show="isOpen">
     <nav-header />
-    <nav-section
-      :nav-section="navigationList"
-      @route="(route: selectedRoute) => $emit('route', route)"
-    />
+    <nav-section :nav-section="navigationList" @route="(route) => $emit('route', route)" />
   </div>
 </template>
 
@@ -49,3 +46,4 @@ defineProps({
   }
 }
 </style>
+../router/types/route../router/types/selectedRoute

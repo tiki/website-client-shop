@@ -1,43 +1,37 @@
 <script setup lang="ts">
 import { type PropType, ref, onMounted } from 'vue'
-import { type Route } from './types/route'
-import type { selectedRoute } from './types/selectedRoute'
+import { type MainRouter } from '@/router/types/MainRouter'
+import { type Route } from '@/router/types/route'
+import Router from '../router/router'
 
 const props = defineProps({
   navSection: {
     required: true,
-    type: Object as PropType<Route[]>
+    type: Object as PropType<MainRouter[]>
   }
 })
 
 const emits = defineEmits(['route'])
 
-const selectedRoute = ref<selectedRoute>()
+const selectedRoute = ref<Route>(Router.getInitialRoute())
 
-const handleRouting = (route: string, title: string) => {
-  selectedRoute.value = {
-    title,
-    route
-  }
-  emits('route', selectedRoute.value)
+const handleRouting = (route: Route) => {
+  selectedRoute.value = route
+  emits('route', route)
 }
-
-onMounted(() => {
-  selectedRoute.value = { title: props.navSection[0].title, route: props.navSection[0].navList[2] }
-})
 </script>
 
 <template>
   <div v-for="section in navSection">
-    <p>{{ section.title }}</p>
+    <p>{{ section.sectionName }}</p>
     <ul>
       <li
         v-for="route in section.navList"
-        :key="route"
-        @click="handleRouting(route, section.title)"
-        :class="route === selectedRoute?.route ? 'selected-route' : ''"
+        :key="route.route"
+        @click="handleRouting(route)"
+        :class="route.route === selectedRoute?.route ? 'selected-route' : ''"
       >
-        {{ route }}
+        {{ route.route }}
       </li>
     </ul>
   </div>
@@ -77,3 +71,4 @@ li:hover,
   border-radius: 0.1875em;
 }
 </style>
+../router/types/route../router/types/selectedRoute
