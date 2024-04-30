@@ -2,27 +2,18 @@ import { type ChartData } from './types/Chart'
 import { Chart } from 'chart.js/auto'
 
 export default class ChartService {
-  public static renderLegalComplianceChart(
-    Charts?: ChartData[],
-    firstContainerId?: string,
-    lastContainerId?: string
-  ) {
+  public static renderLegalComplianceChart(Charts: ChartData[], firstContainerId: string) {
     const firstContainer = document.getElementById(firstContainerId!)
-    const lastContainer = document.getElementById(lastContainerId!)
-    Charts?.forEach((chart, index) => {
+    Charts?.forEach((chart) => {
       const newCanva = document.createElement('canvas')
       newCanva.id = `${window.crypto.randomUUID()}`
-      newCanva.width = chart.width ?? 10
-      newCanva.height = chart.height ?? 10
+      newCanva.width = 200
+      newCanva.height = 200
 
       const newDiv = document.createElement('div')
+      firstContainer?.appendChild(newDiv)
 
-      if (index == 0) {
-        firstContainer?.appendChild(newCanva)
-      } else {
-        lastContainer?.appendChild(newDiv)
-        newDiv?.appendChild(newCanva)
-      }
+      newDiv.appendChild(newCanva)
 
       new Chart(newCanva.id, {
         type: chart.type,
