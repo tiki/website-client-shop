@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { onMounted } from 'vue'
-import { renderLegalComplianceChart } from '../DatasetContent/createCharts'
-import type { ChartData } from '@/DatasetContent/types'
+import ChartService from '../ChartService/index'
+import { type ChartData } from '../ChartService/types/Chart'
 
 const props = defineProps({
   title: {
@@ -49,7 +49,7 @@ const datasources: ChartData[] =
       ]
 onMounted(() => {
   try {
-    renderLegalComplianceChart(datasources, props.containerId)
+    ChartService.renderLegalComplianceChart(datasources, props.containerId)
   } catch {
     ;(e: any) => console.log(e)
   }

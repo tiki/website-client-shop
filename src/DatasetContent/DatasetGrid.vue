@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import DatasetStats from './DatasetStats.vue'
 import { onMounted } from 'vue'
-import createCharts from './createCharts'
-import type { ChartData, Stats } from './types'
+import ChartService from '../ChartService/index'
+import { type ChartData } from '../ChartService/types/Chart'
+import type { Stats } from './types'
 import CustomButton from '../CustomButton/CustomButton.vue'
 import { ButtonState } from '../CustomButton/ButtonState'
 
@@ -208,7 +209,11 @@ const stats: Stats = {
 }
 
 onMounted(() => {
-  createCharts(chartsData, 'chart-button-container', 'dataset-last-grid-container')
+  ChartService.renderDatasetScreenChart(
+    chartsData,
+    'chart-button-container',
+    'dataset-last-grid-container'
+  )
 })
 </script>
 
