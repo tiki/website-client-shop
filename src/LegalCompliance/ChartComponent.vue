@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted } from 'vue'
+import { onMounted, type PropType } from 'vue'
 import ChartService from '../ChartService/index'
 import { type ChartData } from '../ChartService/types/Chart'
 
@@ -11,45 +11,16 @@ const props = defineProps({
   containerId: {
     type: String,
     required: true
+  },
+  chartData: {
+    required: true,
+    type: Object as PropType<ChartData>
   }
 })
-const accentColor = getComputedStyle(document.body).getPropertyValue('--accent-color')
 
-const datasources: ChartData[] =
-  props.containerId === 'data-sources'
-    ? [
-        {
-          width: 5,
-          height: 2,
-          type: 'doughnut',
-          labels: ['App 1', 'App 2', 'Stripe', 'Hubspot'],
-          datasets: [
-            {
-              data: [90, 52, 36, 10],
-              label: '',
-              backgroundColor: [68, 52, 36, 20].map((el) => accentColor + el)
-            }
-          ]
-        }
-      ]
-    : [
-        {
-          width: 5,
-          height: 2,
-          type: 'doughnut',
-          labels: ['ANALYTICS', 'AI TRAINING', 'ADVERTISING', 'ATTRIBUTION'],
-          datasets: [
-            {
-              data: [68, 52, 36, 20],
-              label: '',
-              backgroundColor: [68, 52, 36, 20].map((el) => accentColor + el)
-            }
-          ]
-        }
-      ]
 onMounted(() => {
   try {
-    ChartService.renderLegalComplianceChart(datasources, props.containerId)
+    ChartService.renderLegalComplianceChart(props.chartData, props.containerId)
   } catch {
     ;(e: any) => console.log(e)
   }
