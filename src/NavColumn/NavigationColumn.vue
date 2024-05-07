@@ -46,4 +46,3 @@ defineProps({
   }
 }
 </style>
-../router/types/route../router/types/selectedRoute

@@ -1,10 +1,8 @@
 <script setup lang="ts">
 import NavigationColumn from '../NavColumn/NavigationColumn.vue'
-import ContentColumn from '../ContentColumn/ContentColumn.vue'
 import { onMounted, ref } from 'vue'
 import { type Route } from '@/router/types/route'
 import type { MainRouter } from '@/router/types/MainRouter'
-import ThirdColumn from '../ThirdColumn/ThirdColumn.vue'
 
 import Router from '../router/router'
 
@@ -34,19 +32,15 @@ onMounted(() => {
       :navigationList="router"
       :isOpen="isOpen"
     />
-
-    <content-column
+    <component
       :title="`${selectedRoute.type}: ${selectedRoute.route}`"
       :subtitle="selectedRoute.subtitle"
+      :table="selectedRoute.route"
       @toggle="isOpen = !isOpen"
+      @close="closeDrawer()"
       :isOpen="isOpen"
-    >
-      <component :is="selectedRoute.contentComponent"></component>
-    </content-column>
-
-    <third-column @click="closeDrawer()" :isOpen="isOpen">
-      <component :is="selectedRoute.thirdColumnComponent" :table="selectedRoute.route"></component>
-    </third-column>
+      :is="selectedRoute.component"
+    />
   </div>
 </template>
 
@@ -66,4 +60,3 @@ onMounted(() => {
   }
 }
 </style>
-../router/router ../router/types/selectedRoute

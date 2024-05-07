@@ -1,8 +1,6 @@
 import type { Route } from './types/route'
-import LegalComplianceContainer from '../LegalCompliance/LegalComplianceContent.vue'
-import DataSourceAgreement from '../LegalCompliance/DataSourceAgreement.vue'
-import TableColumn from '../TableColumn/TableColumn.vue'
-import DatasetGrid from '../DatasetContent/DatasetGrid.vue'
+import LegalComplianceScreen from '@/LegalCompliance/LegalComplianceScreen.vue'
+import DatasetScreen from '@/Dataset/DatasetScreen.vue'
 import type { MainRouter } from './types/MainRouter'
 
 export default class Router {
@@ -28,8 +26,7 @@ export default class Router {
       type: 'my account',
       route: 'Legal Compliance',
       subtitle: `All data provided is licensed directly from the legal owner. Review and select the agreements that meet your due-diligence criteria to get started.`,
-      contentComponent: LegalComplianceContainer,
-      thirdColumnComponent: DataSourceAgreement
+      component: LegalComplianceScreen
     }
   ]
   private dataAccessroutes: Route[] = [
@@ -93,22 +90,19 @@ export default class Router {
         type: 'Datasets',
         route: 'Transactions',
         subtitle: `This dataset contains purchase transaction information like the date, amount, merchant, type, and location. Combine with demographics to build profiles against spend. See Taxonomy for all available fields. Each record contains a standard userid which can be used to join demographics to various other datasets, such as receipts and demographics.`,
-        contentComponent: DatasetGrid,
-        thirdColumnComponent: TableColumn
+        component: DatasetScreen
       },
       {
         type: 'Datasets',
         route: 'Receipts',
         subtitle: `This dataset contains purchase transaction information like the date, amount, merchant, type, and location. Combine with demographics to build profiles against spend. See Taxonomy for all available fields. Each record contains a standard userid which can be used to join demographics to various other datasets, such as receipts and demographics.`,
-        contentComponent: DatasetGrid,
-        thirdColumnComponent: TableColumn
+        component: DatasetScreen
       },
       {
         type: 'Datasets',
         route: 'Demographics',
         subtitle: `This dataset contains purchase transaction information like the date, amount, merchant, type, and location. Combine with demographics to build profiles against spend. See Taxonomy for all available fields. Each record contains a standard userid which can be used to join demographics to various other datasets, such as receipts and demographics.`,
-        contentComponent: DatasetGrid,
-        thirdColumnComponent: TableColumn
+        component: DatasetScreen
       }
     ]
     instance.datasetsRoutes = datasetsRoutes
