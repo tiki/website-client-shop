@@ -1,6 +1,5 @@
 import type { Route } from './types/route'
 import LegalComplianceScreen from '@/LegalCompliance/LegalComplianceScreen.vue'
-import DatasetScreen from '@/Dataset/DatasetScreen.vue'
 import type { MainRouter } from './types/MainRouter'
 
 export default class Router {
@@ -89,20 +88,17 @@ export default class Router {
       {
         type: 'Datasets',
         route: 'Transactions',
-        subtitle: `This dataset contains purchase transaction information like the date, amount, merchant, type, and location. Combine with demographics to build profiles against spend. See Taxonomy for all available fields. Each record contains a standard userid which can be used to join demographics to various other datasets, such as receipts and demographics.`,
-        component: DatasetScreen
+        subtitle: `This dataset contains purchase transaction information like the date, amount, merchant, type, and location. Combine with demographics to build profiles against spend. See Taxonomy for all available fields. Each record contains a standard userid which can be used to join demographics to various other datasets, such as receipts and demographics.`
       },
       {
         type: 'Datasets',
         route: 'Receipts',
-        subtitle: `This dataset contains purchase transaction information like the date, amount, merchant, type, and location. Combine with demographics to build profiles against spend. See Taxonomy for all available fields. Each record contains a standard userid which can be used to join demographics to various other datasets, such as receipts and demographics.`,
-        component: DatasetScreen
+        subtitle: `This dataset contains purchase transaction information like the date, amount, merchant, type, and location. Combine with demographics to build profiles against spend. See Taxonomy for all available fields. Each record contains a standard userid which can be used to join demographics to various other datasets, such as receipts and demographics.`
       },
       {
         type: 'Datasets',
         route: 'Demographics',
-        subtitle: `This dataset contains purchase transaction information like the date, amount, merchant, type, and location. Combine with demographics to build profiles against spend. See Taxonomy for all available fields. Each record contains a standard userid which can be used to join demographics to various other datasets, such as receipts and demographics.`,
-        component: DatasetScreen
+        subtitle: `This dataset contains purchase transaction information like the date, amount, merchant, type, and location. Combine with demographics to build profiles against spend. See Taxonomy for all available fields. Each record contains a standard userid which can be used to join demographics to various other datasets, such as receipts and demographics.`
       }
     ]
     instance.datasetsRoutes = datasetsRoutes
