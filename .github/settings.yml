@@ -34,5 +34,9 @@ branches:
 
 milestones:
   - title: 0.0.2
-    description: DRAFT
+    description: Relased in https://github.com/mytiki/platform-mon-storefront/releases/tag/0.0.2
+    state: closed
+
+  - title: 0.0.3
+    description: Implement a CMS 
     state: open
