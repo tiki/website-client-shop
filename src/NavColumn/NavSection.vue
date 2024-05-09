@@ -71,4 +71,3 @@ li:hover,
   border-radius: 0.1875em;
 }
 </style>
-../router/types/route../router/types/selectedRoute

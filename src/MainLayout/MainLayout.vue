@@ -1,10 +1,9 @@
 <script setup lang="ts">
 import NavigationColumn from '../NavColumn/NavigationColumn.vue'
-import ContentColumn from '../ContentColumn/ContentColumn.vue'
-import { onMounted, ref } from 'vue'
+import { computed, onMounted, ref } from 'vue'
 import { type Route } from '@/router/types/route'
 import type { MainRouter } from '@/router/types/MainRouter'
-import ThirdColumn from '../ThirdColumn/ThirdColumn.vue'
+import DatasetScreen from '@/Dataset/DatasetScreen.vue'
 
 import Router from '../router/router'
 
@@ -21,6 +20,11 @@ const closeDrawer = () => {
 onMounted(() => {
   if (window.outerWidth >= 1280) isOpen.value = true
 })
+
+const loadComponent = computed(() => {
+  if (selectedRoute.value.type === 'Datasets') return DatasetScreen
+  return selectedRoute.value.component
+})
 </script>
 
 <template>
@@ -34,19 +38,15 @@ onMounted(() => {
       :navigationList="router"
       :isOpen="isOpen"
     />
-
-    <content-column
+    <component
       :title="`${selectedRoute.type}: ${selectedRoute.route}`"
       :subtitle="selectedRoute.subtitle"
+      :table="selectedRoute.route"
       @toggle="isOpen = !isOpen"
+      @close="closeDrawer()"
       :isOpen="isOpen"
-    >
-      <component :is="selectedRoute.contentComponent"></component>
-    </content-column>
-
-    <third-column @click="closeDrawer()" :isOpen="isOpen">
-      <component :is="selectedRoute.thirdColumnComponent" :table="selectedRoute.route"></component>
-    </third-column>
+      :is="loadComponent"
+    />
   </div>
 </template>
 
@@ -66,4 +66,3 @@ onMounted(() => {
   }
 }
 </style>
-../router/router ../router/types/selectedRoute
