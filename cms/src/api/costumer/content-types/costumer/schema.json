@@ -1,0 +1,25 @@
+{
+  "kind": "collectionType",
+  "collectionName": "costumers",
+  "info": {
+    "singularName": "costumer",
+    "pluralName": "costumers",
+    "displayName": "Costumer",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "datasets": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::dataset.dataset",
+      "mappedBy": "costumer"
+    }
+  }
+}
