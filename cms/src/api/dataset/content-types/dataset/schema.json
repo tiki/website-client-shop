@@ -1,0 +1,37 @@
+{
+  "kind": "collectionType",
+  "collectionName": "datasets",
+  "info": {
+    "singularName": "dataset",
+    "pluralName": "datasets",
+    "displayName": "Dataset",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "stats": {
+      "type": "json"
+    },
+    "charts": {
+      "type": "json"
+    },
+    "taxonomy": {
+      "type": "json"
+    },
+    "costumer": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::costumer.costumer",
+      "inversedBy": "datasets"
+    }
+  }
+}
