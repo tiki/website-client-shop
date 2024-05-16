@@ -39,4 +39,8 @@ milestones:
 
   - title: 0.0.3
     description: Implement a CMS 
+    state: closed
+
+  - title: 0.0.4
+    description: Connect the CMS with Storefront and identify the customers through a JWT issued by TIKI.
     state: open
