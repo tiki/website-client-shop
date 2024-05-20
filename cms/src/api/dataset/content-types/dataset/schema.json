@@ -32,6 +32,11 @@
       "relation": "manyToOne",
       "target": "api::costumer.costumer",
       "inversedBy": "datasets"
+    },
+    "legal_compliance": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::legal-compliance.legal-compliance"
     }
   }
 }
