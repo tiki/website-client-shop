@@ -367,7 +367,7 @@ export interface ApiCostumerCostumer extends Schema.CollectionType {
   info: {
     singularName: 'costumer';
     pluralName: 'costumers';
-    displayName: 'Costumer';
+    displayName: 'Customer';
     description: '';
   };
   options: {
@@ -379,6 +379,11 @@ export interface ApiCostumerCostumer extends Schema.CollectionType {
       'api::costumer.costumer',
       'oneToMany',
       'api::dataset.dataset'
+    >;
+    legal_compliances: Attribute.Relation<
+      'api::costumer.costumer',
+      'oneToMany',
+      'api::legal-compliance.legal-compliance'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -420,6 +425,11 @@ export interface ApiDatasetDataset extends Schema.CollectionType {
       'manyToOne',
       'api::costumer.costumer'
     >;
+    legal_compliance: Attribute.Relation<
+      'api::dataset.dataset',
+      'oneToOne',
+      'api::legal-compliance.legal-compliance'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -431,6 +441,39 @@ export interface ApiDatasetDataset extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::dataset.dataset',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiLegalComplianceLegalCompliance
+  extends Schema.CollectionType {
+  collectionName: 'legal_compliances';
+  info: {
+    singularName: 'legal-compliance';
+    pluralName: 'legal-compliances';
+    displayName: 'legalCompliance';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String;
+    trailInfo: Attribute.JSON;
+    agreements: Attribute.JSON;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::legal-compliance.legal-compliance',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::legal-compliance.legal-compliance',
       'oneToOne',
       'admin::user'
     > &
@@ -875,6 +918,7 @@ declare module '@strapi/types' {
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'api::costumer.costumer': ApiCostumerCostumer;
       'api::dataset.dataset': ApiDatasetDataset;
+      'api::legal-compliance.legal-compliance': ApiLegalComplianceLegalCompliance;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::content-releases.release': PluginContentReleasesRelease;

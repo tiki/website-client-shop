@@ -4,7 +4,7 @@
   "info": {
     "singularName": "costumer",
     "pluralName": "costumers",
-    "displayName": "Costumer",
+    "displayName": "Customer",
     "description": ""
   },
   "options": {
@@ -20,6 +20,11 @@
       "relation": "oneToMany",
       "target": "api::dataset.dataset",
       "mappedBy": "costumer"
+    },
+    "legal_compliances": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::legal-compliance.legal-compliance"
     }
   }
 }
