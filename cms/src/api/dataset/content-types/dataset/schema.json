@@ -27,10 +27,10 @@
     "taxonomy": {
       "type": "json"
     },
-    "costumer": {
+    "customer": {
       "type": "relation",
       "relation": "manyToOne",
-      "target": "api::costumer.costumer",
+      "target": "api::customer.customer",
       "inversedBy": "datasets"
     },
     "legal_compliance": {
