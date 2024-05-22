@@ -362,26 +362,26 @@ export interface AdminTransferTokenPermission extends Schema.CollectionType {
   };
 }
 
-export interface ApiCostumerCostumer extends Schema.CollectionType {
-  collectionName: 'costumers';
+export interface ApiCustomerCustomer extends Schema.CollectionType {
+  collectionName: 'customers';
   info: {
-    singularName: 'costumer';
-    pluralName: 'costumers';
+    singularName: 'customer';
+    pluralName: 'customers';
     displayName: 'Customer';
-    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
     name: Attribute.String;
+    domain: Attribute.String;
     datasets: Attribute.Relation<
-      'api::costumer.costumer',
+      'api::customer.customer',
       'oneToMany',
       'api::dataset.dataset'
     >;
     legal_compliances: Attribute.Relation<
-      'api::costumer.costumer',
+      'api::customer.customer',
       'oneToMany',
       'api::legal-compliance.legal-compliance'
     >;
@@ -389,13 +389,13 @@ export interface ApiCostumerCostumer extends Schema.CollectionType {
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
-      'api::costumer.costumer',
+      'api::customer.customer',
       'oneToOne',
       'admin::user'
     > &
       Attribute.Private;
     updatedBy: Attribute.Relation<
-      'api::costumer.costumer',
+      'api::customer.customer',
       'oneToOne',
       'admin::user'
     > &
@@ -420,10 +420,10 @@ export interface ApiDatasetDataset extends Schema.CollectionType {
     stats: Attribute.JSON;
     charts: Attribute.JSON;
     taxonomy: Attribute.JSON;
-    costumer: Attribute.Relation<
+    customer: Attribute.Relation<
       'api::dataset.dataset',
       'manyToOne',
-      'api::costumer.costumer'
+      'api::customer.customer'
     >;
     legal_compliance: Attribute.Relation<
       'api::dataset.dataset',
@@ -455,6 +455,7 @@ export interface ApiLegalComplianceLegalCompliance
     singularName: 'legal-compliance';
     pluralName: 'legal-compliances';
     displayName: 'legalCompliance';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -463,6 +464,11 @@ export interface ApiLegalComplianceLegalCompliance
     name: Attribute.String;
     trailInfo: Attribute.JSON;
     agreements: Attribute.JSON;
+    customer: Attribute.Relation<
+      'api::legal-compliance.legal-compliance',
+      'manyToOne',
+      'api::customer.customer'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -709,6 +715,53 @@ export interface PluginContentReleasesReleaseAction
   };
 }
 
+export interface PluginI18NLocale extends Schema.CollectionType {
+  collectionName: 'i18n_locale';
+  info: {
+    singularName: 'locale';
+    pluralName: 'locales';
+    collectionName: 'locales';
+    displayName: 'Locale';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    'content-manager': {
+      visible: false;
+    };
+    'content-type-builder': {
+      visible: false;
+    };
+  };
+  attributes: {
+    name: Attribute.String &
+      Attribute.SetMinMax<
+        {
+          min: 1;
+          max: 50;
+        },
+        number
+      >;
+    code: Attribute.String & Attribute.Unique;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'plugin::i18n.locale',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'plugin::i18n.locale',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface PluginUsersPermissionsPermission
   extends Schema.CollectionType {
   collectionName: 'up_permissions';
@@ -859,53 +912,6 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
-export interface PluginI18NLocale extends Schema.CollectionType {
-  collectionName: 'i18n_locale';
-  info: {
-    singularName: 'locale';
-    pluralName: 'locales';
-    collectionName: 'locales';
-    displayName: 'Locale';
-    description: '';
-  };
-  options: {
-    draftAndPublish: false;
-  };
-  pluginOptions: {
-    'content-manager': {
-      visible: false;
-    };
-    'content-type-builder': {
-      visible: false;
-    };
-  };
-  attributes: {
-    name: Attribute.String &
-      Attribute.SetMinMax<
-        {
-          min: 1;
-          max: 50;
-        },
-        number
-      >;
-    code: Attribute.String & Attribute.Unique;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'plugin::i18n.locale',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'plugin::i18n.locale',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -916,17 +922,17 @@ declare module '@strapi/types' {
       'admin::api-token-permission': AdminApiTokenPermission;
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
-      'api::costumer.costumer': ApiCostumerCostumer;
+      'api::customer.customer': ApiCustomerCustomer;
       'api::dataset.dataset': ApiDatasetDataset;
       'api::legal-compliance.legal-compliance': ApiLegalComplianceLegalCompliance;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
+      'plugin::i18n.locale': PluginI18NLocale;
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
-      'plugin::i18n.locale': PluginI18NLocale;
     }
   }
 }

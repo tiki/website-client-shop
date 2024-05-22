@@ -24,8 +24,6 @@ const closeDrawer = () => {
 }
 
 const width = ref<number>(window.outerWidth)
-
-console.log(width.value)
 </script>
 
 <template>

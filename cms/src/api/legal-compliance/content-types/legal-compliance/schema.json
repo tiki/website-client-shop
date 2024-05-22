@@ -4,7 +4,8 @@
   "info": {
     "singularName": "legal-compliance",
     "pluralName": "legal-compliances",
-    "displayName": "legalCompliance"
+    "displayName": "legalCompliance",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -19,6 +20,12 @@
     },
     "agreements": {
       "type": "json"
+    },
+    "customer": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::customer.customer",
+      "inversedBy": "legal_compliances"
     }
   }
 }

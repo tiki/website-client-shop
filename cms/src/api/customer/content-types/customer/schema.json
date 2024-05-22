@@ -1,11 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "costumers",
+  "collectionName": "customers",
   "info": {
-    "singularName": "costumer",
-    "pluralName": "costumers",
-    "displayName": "Customer",
-    "description": ""
+    "singularName": "customer",
+    "pluralName": "customers",
+    "displayName": "Customer"
   },
   "options": {
     "draftAndPublish": true
@@ -15,16 +14,20 @@
     "name": {
       "type": "string"
     },
+    "domain": {
+      "type": "string"
+    },
     "datasets": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::dataset.dataset",
-      "mappedBy": "costumer"
+      "mappedBy": "customer"
     },
     "legal_compliances": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::legal-compliance.legal-compliance"
+      "target": "api::legal-compliance.legal-compliance",
+      "mappedBy": "customer"
     }
   }
 }
