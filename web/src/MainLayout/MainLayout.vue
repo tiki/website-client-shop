@@ -7,7 +7,7 @@ import DatasetScreen from '@/Dataset/DatasetScreen.vue'
 
 import Router from '../router/router'
 
-const router: MainRouter[] = Router.getRoutes()
+let router: undefined | MainRouter[]
 
 const selectedRoute = ref<Route>(Router.getInitialRoute())
 
@@ -17,7 +17,8 @@ const width = ref<number>(window.outerWidth)
 const closeDrawer = () => {
   if (isOpen.value === true && width.value < 1280) isOpen.value = false
 }
-onMounted(() => {
+onMounted(async () => {
+  router = await Router.getRoutes()
   if (window.outerWidth >= 1280) isOpen.value = true
 })
 
