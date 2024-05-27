@@ -104,7 +104,6 @@ export default class Router {
       })
     })
 
-    console.log(datasetsRoutes)
     instance.datasetsRoutes = datasetsRoutes
 
     const routes: MainRouter[] = [

@@ -8,7 +8,7 @@ const props = defineProps({
   },
   state: {
     required: true,
-    type: Object as PropType<ButtonState>
+    type: String as PropType<ButtonState>
   }
 })
 

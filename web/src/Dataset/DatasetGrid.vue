@@ -1,11 +1,24 @@
 <script setup lang="ts">
 import DatasetStats from './DatasetStats.vue'
-import { onMounted } from 'vue'
+import { inject, onMounted, type PropType } from 'vue'
 import ChartService from '../ChartService/index'
 import { type ChartData } from '../ChartService/types/Chart'
 import type { Stats } from './types'
 import CustomButton from '../CustomButton/CustomButton.vue'
 import { ButtonState } from '../CustomButton/ButtonState'
+import type { Data } from './types/datasetRsp'
+
+const props = defineProps({
+  dataset: {
+    required: true,
+    // type: Object as PropType<Data>
+  }
+})
+
+
+
+console.log('test props:', props.dataset)
+
 
 const chartsData: ChartData[][] = [
   [
