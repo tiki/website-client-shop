@@ -10,17 +10,10 @@ const props = defineProps({
     type: String,
     required: true
   },
-  isOpen: {
-    type: Boolean,
-    required: true
-  }
 })
 
 const emit = defineEmits(['toggle'])
 
-const closeDrawer = () => {
-  if (props.isOpen && window.outerWidth < 1280) emit('toggle')
-}
 </script>
 
 <template>
@@ -29,9 +22,8 @@ const closeDrawer = () => {
       :title="title"
       :subtitle="subtitle"
       @toggle="$emit('toggle')"
-      :is-open="isOpen"
     />
-    <div class="slot-container" @click="closeDrawer()">
+    <div class="slot-container">
       <slot />
     </div>
   </div>

@@ -2,7 +2,7 @@
 import MenuIcon from '../Icons/MenuIcon.vue'
 import { ref } from 'vue'
 
-const props = defineProps({
+defineProps({
   title: {
     type: String,
     required: true
@@ -11,17 +11,9 @@ const props = defineProps({
     type: String,
     required: true
   },
-  isOpen: {
-    type: Boolean,
-    required: true
-  }
 })
 
 const emit = defineEmits(['toggle'])
-
-const closeDrawer = () => {
-  if (props.isOpen && window.outerWidth < 1280) emit('toggle')
-}
 
 const width = ref<number>(window.outerWidth)
 </script>
@@ -29,12 +21,12 @@ const width = ref<number>(window.outerWidth)
 <template>
   <div class="container">
     <div class="title-button-container">
-      <h1 @click="closeDrawer()">{{ title }}</h1>
+      <h1>{{ title }}</h1>
       <button class="menu-button" @click="$emit('toggle')" v-if="width < 1280">
         <menu-icon />
       </button>
     </div>
-    <h2 @click="closeDrawer()">
+    <h2>
       {{ subtitle }}
     </h2>
     <hr />

@@ -1,26 +1,26 @@
 <script setup lang="ts">
 import NavSection from './NavSection.vue'
 import NavHeader from './NavHeader.vue'
-import type { PropType } from 'vue'
-import { type Route } from '@/router/types/route'
 import { type MainRouter } from '@/router/types/MainRouter'
+import Router from '../router/router'
 
 defineProps({
   isOpen: {
     required: true,
     type: Boolean
   },
-  navigationList: {
-    required: true,
-    type: Object as PropType<MainRouter[]>
-  }
 })
+
+const router: MainRouter[] = Router.getRoutes()
+
+
+defineEmits(['route'])
 </script>
 
 <template>
   <div class="nav-column-container" v-show="isOpen">
     <nav-header />
-    <nav-section :nav-section="navigationList" @route="(route) => $emit('route', route)" />
+    <nav-section :nav-list="router" @route="(route) => $emit('route', route)" />
   </div>
 </template>
 

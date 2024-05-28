@@ -4,8 +4,8 @@ import { type MainRouter } from '@/router/types/MainRouter'
 import { type Route } from '@/router/types/route'
 import Router from '../router/router'
 
-const props = defineProps({
-  navSection: {
+defineProps({
+  navList: {
     required: true,
     type: Object as PropType<MainRouter[]>
   }
@@ -22,7 +22,7 @@ const handleRouting = (route: Route) => {
 </script>
 
 <template>
-  <div v-for="section in navSection">
+  <div v-for="section in navList">
     <p>{{ section.sectionName }}</p>
     <ul>
       <li
