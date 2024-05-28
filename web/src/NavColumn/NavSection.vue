@@ -1,8 +1,10 @@
 <script setup lang="ts">
-import { type PropType, ref, onMounted } from 'vue'
+import { type PropType, ref } from 'vue'
 import { type MainRouter } from '@/router/types/MainRouter'
 import { type Route } from '@/router/types/route'
 import Router from '../router/router'
+import { useRouter } from 'vue-router'
+import camelize from '@/utils/camelize'
 
 defineProps({
   navList: {
@@ -11,13 +13,17 @@ defineProps({
   }
 })
 
+const router = useRouter()
+
 const emits = defineEmits(['route'])
 
 const selectedRoute = ref<Route>(Router.getInitialRoute())
 
 const handleRouting = (route: Route) => {
   selectedRoute.value = route
-  emits('route', route)
+  const nextRoute = `/${camelize(route.type)}/${camelize(route.route)}`
+  console.log(nextRoute)
+  router.push(nextRoute)
 }
 </script>
 

@@ -27,10 +27,10 @@ defineEmits(['toggle', 'close'])
 </script>
 
 <template>
-  <content-column :is-open="isOpen" :title="title" :subtitle="subtitle" @toggle="$emit('toggle')">
+  <content-column :title="title" :subtitle="subtitle" @toggle="$emit('toggle')">
     <dataset-grid />
   </content-column>
-  <third-column :is-open="isOpen" @click="$emit('close')">
+  <third-column @click="$emit('close')">
     <table-column :table="table" />
   </third-column>
 </template>

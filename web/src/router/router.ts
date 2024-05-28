@@ -120,9 +120,11 @@ const routes = [
   },
   {
     path: '/myAccount',
+    name: 'my account',
     children: [
       {
         path: 'legalCompliance',
+        name: 'legal compliance',
         component: LegalComplianceScreen
       }
     ]
@@ -130,6 +132,7 @@ const routes = [
   {
     path: '/datasets/:name',
     component: DatasetScreen,
+    name: 'datasets',
     children: []
   }
 ]
