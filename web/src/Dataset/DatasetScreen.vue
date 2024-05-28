@@ -22,6 +22,8 @@ defineProps({
     type: String
   }
 })
+
+defineEmits(['toggle', 'close'])
 </script>
 
 <template>

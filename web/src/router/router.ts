@@ -1,6 +1,7 @@
 import type { Route } from './types/route'
 import LegalComplianceScreen from '@/LegalCompliance/LegalComplianceScreen.vue'
 import type { MainRouter } from './types/MainRouter'
+import { shallowRef,  ref, computed } from 'vue'
 
 export default class Router {
   private static instance: Router
@@ -25,7 +26,7 @@ export default class Router {
       type: 'my account',
       route: 'Legal Compliance',
       subtitle: `All data provided is licensed directly from the legal owner. Review and select the agreements that meet your due-diligence criteria to get started.`,
-      component: LegalComplianceScreen
+      component: shallowRef(LegalComplianceScreen)
     }
   ]
   private dataAccessroutes: Route[] = [
