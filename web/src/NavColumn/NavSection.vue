@@ -15,14 +15,11 @@ defineProps({
 
 const router = useRouter()
 
-const emits = defineEmits(['route'])
-
 const selectedRoute = ref<Route>(Router.getInitialRoute())
 
 const handleRouting = (route: Route) => {
   selectedRoute.value = route
   const nextRoute = `/${camelize(route.type)}/${camelize(route.route)}`
-  console.log(nextRoute)
   router.push(nextRoute)
 }
 </script>

@@ -4,23 +4,14 @@ import NavHeader from './NavHeader.vue'
 import { type MainRouter } from '@/router/types/MainRouter'
 import Router from '../router/router'
 
-defineProps({
-  isOpen: {
-    required: true,
-    type: Boolean
-  },
-})
-
 const router: MainRouter[] = Router.getRoutes()
 
-
-defineEmits(['route'])
 </script>
 
 <template>
-  <div class="nav-column-container" v-show="isOpen">
+  <div class="nav-column-container">
     <nav-header />
-    <nav-section :nav-list="router" @route="(route) => $emit('route', route)" />
+    <nav-section :nav-list="router"/>
   </div>
 </template>
 
