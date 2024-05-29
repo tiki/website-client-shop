@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { type PropType, ref } from 'vue'
 import { type MainRouter } from '@/router/types/MainRouter'
-import { type Route } from '@/router/types/route'
 import Router from '../router/router'
 import { useRouter } from 'vue-router'
 import camelize from '@/utils/camelize'
@@ -15,11 +14,11 @@ defineProps({
 
 const router = useRouter()
 
-const selectedRoute = ref<Route>(Router.getInitialRoute())
+const selectedRoute = ref<string>(Router.getInitialRoute())
 
-const handleRouting = (route: Route) => {
+const handleRouting = (route: string, section: string) => {
   selectedRoute.value = route
-  const nextRoute = `/${camelize(route.type)}/${camelize(route.route)}`
+  const nextRoute = `/${camelize(section)}/${camelize(route)}`
   router.push(nextRoute)
 }
 </script>
@@ -30,11 +29,11 @@ const handleRouting = (route: Route) => {
     <ul>
       <li
         v-for="route in section.navList"
-        :key="route.route"
-        @click="handleRouting(route)"
-        :class="route.route === selectedRoute?.route ? 'selected-route' : ''"
+        :key="route"
+        @click="handleRouting(route, section.sectionName)"
+        :class="route === selectedRoute ? 'selected-route' : ''"
       >
-        {{ route.route }}
+        {{ route }}
       </li>
     </ul>
   </div>

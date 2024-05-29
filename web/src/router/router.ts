@@ -1,4 +1,3 @@
-import type { Route } from './types/route'
 import type { MainRouter } from './types/MainRouter'
 
 import LegalComplianceScreen from '@/LegalCompliance/LegalComplianceScreen.vue'
@@ -9,55 +8,22 @@ import { createMemoryHistory, createRouter } from 'vue-router'
 export default class Router {
   private static instance: Router
 
-  private myAccountRoutes: Route[] = [
-    {
-      type: 'my account',
-      route: 'Organization'
-    },
-    {
-      type: 'my account',
-      route: 'Billing and Usage'
-    },
-    {
-      type: 'my account',
-      route: 'Access Keys'
-    },
-    {
-      type: 'my account',
-      route: 'Legal Compliance'
-    }
+  private myAccountRoutes: string[] = [
+    'Organization',
+    'Billing and Usage',
+    'Access Keys',
+    'Legal Compliance'
   ]
-  private dataAccessroutes: Route[] = [
-    {
-      type: 'Data Access',
-      route: 'Playground'
-    },
-    {
-      type: 'Data Access',
-      route: 'AWS Athena'
-    },
-    {
-      type: 'Data Access',
-      route: 'Snowflake'
-    },
-    {
-      type: 'Data Access',
-      route: 'Apache Airflow'
-    },
-    {
-      type: 'Data Access',
-      route: 'Google BigQuery'
-    },
-    {
-      type: 'Data Access',
-      route: 'Apache Spark'
-    },
-    {
-      type: 'Data Access',
-      route: 'Databricks'
-    }
+  private dataAccessroutes: string[] = [
+    'Playground',
+    'AWS Athena',
+    'Snowflake',
+    'Apache Airflow',
+    'Google BigQuery',
+    'Apache Spark',
+    'Databricks'
   ]
-  private datasetsRoutes: Route[] = []
+  private datasetsRoutes: string[] = []
 
   public static getInstance(): Router {
     if (!Router.instance) {
@@ -66,7 +32,7 @@ export default class Router {
     return Router.instance
   }
 
-  public static getInitialRoute(): Route {
+  public static getInitialRoute(): string {
     const instance = Router.getInstance()
     return instance.myAccountRoutes[3]
   }
@@ -74,22 +40,9 @@ export default class Router {
   public static getRoutes(): MainRouter[] {
     const instance = Router.getInstance()
 
-    // do fetch to get datasets routes
+    // use fetch to get datasets routes
 
-    const datasetsRoutes: Route[] = [
-      {
-        type: 'Datasets',
-        route: 'Transactions'
-      },
-      {
-        type: 'Datasets',
-        route: 'Receipts'
-      },
-      {
-        type: 'Datasets',
-        route: 'Demographics'
-      }
-    ]
+    const datasetsRoutes: string[] = ['Transactions', 'Receipts', 'Demographics']
     instance.datasetsRoutes = datasetsRoutes
 
     const routes: MainRouter[] = [
@@ -110,7 +63,6 @@ export default class Router {
     return routes
   }
 }
-
 
 const routes = [
   {
