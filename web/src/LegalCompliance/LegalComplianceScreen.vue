@@ -18,13 +18,17 @@ defineProps({
     type: String
   }
 })
+
+defineEmits(['toggle', 'close'])
 </script>
 
 <template>
-  <content-column :is-open="isOpen" :title="title" :subtitle="subtitle" @toggle="$emit('toggle')">
-    <legal-compliance-content />
-  </content-column>
-  <third-column :is-open="isOpen" @click="$emit('close')">
-    <DataSourceAgreement />
-  </third-column>
+  <div>
+    <content-column :is-open="isOpen" :title="title" :subtitle="subtitle" @toggle="$emit('toggle')">
+      <legal-compliance-content />
+    </content-column>
+    <third-column :is-open="isOpen" @click="$emit('close')">
+      <DataSourceAgreement />
+    </third-column>
+  </div>
 </template>
