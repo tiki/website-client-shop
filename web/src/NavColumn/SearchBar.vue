@@ -18,7 +18,7 @@ input {
   width: 139px;
   border-radius: 0.3125em;
   border: 1px solid #000;
-  background: url('src/assets/searchBarSuffix.svg') no-repeat scroll 95% 50%;
+  background: url('../assets/searchBarSuffix.svg') no-repeat scroll 95% 50%;
   margin-top: 2em;
   margin-bottom: 0.5em;
 }
