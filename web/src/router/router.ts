@@ -1,72 +1,29 @@
-import type { Route } from './types/route'
-import LegalComplianceScreen from '@/LegalCompliance/LegalComplianceScreen.vue'
 import type { MainRouter } from './types/MainRouter'
-import { shallowRef,  ref, computed } from 'vue'
+
+import LegalComplianceScreen from '@/LegalCompliance/LegalComplianceScreen.vue'
+import DatasetScreen from '@/Dataset/DatasetScreen.vue'
+
+import { createMemoryHistory, createRouter } from 'vue-router'
 
 export default class Router {
   private static instance: Router
 
-  private myAccountRoutes: Route[] = [
-    {
-      type: 'my account',
-      route: 'Organization',
-      subtitle: `This dataset contains purchase transaction information like the date, amount, merchant, type, and location. Combine with demographics to build profiles against spend. See Taxonomy for all available fields. Each record contains a standard userid which can be used to join demographics to various other datasets, such as receipts and demographics.`
-    },
-    {
-      type: 'my account',
-      route: 'Billing and Usage',
-      subtitle: `This dataset contains purchase transaction information like the date, amount, merchant, type, and location. Combine with demographics to build profiles against spend. See Taxonomy for all available fields. Each record contains a standard userid which can be used to join demographics to various other datasets, such as receipts and demographics.`
-    },
-    {
-      type: 'my account',
-      route: 'Access Keys',
-      subtitle: `This dataset contains purchase transaction information like the date, amount, merchant, type, and location. Combine with demographics to build profiles against spend. See Taxonomy for all available fields. Each record contains a standard userid which can be used to join demographics to various other datasets, such as receipts and demographics.`
-    },
-    {
-      type: 'my account',
-      route: 'Legal Compliance',
-      subtitle: `All data provided is licensed directly from the legal owner. Review and select the agreements that meet your due-diligence criteria to get started.`,
-      component: shallowRef(LegalComplianceScreen)
-    }
+  private myAccountRoutes: string[] = [
+    'Organization',
+    'Billing and Usage',
+    'Access Keys',
+    'Legal Compliance'
   ]
-  private dataAccessroutes: Route[] = [
-    {
-      type: 'Data Access',
-      route: 'Playground',
-      subtitle: `This dataset contains purchase transaction information like the date, amount, merchant, type, and location. Combine with demographics to build profiles against spend. See Taxonomy for all available fields. Each record contains a standard userid which can be used to join demographics to various other datasets, such as receipts and demographics.`
-    },
-    {
-      type: 'Data Access',
-      route: 'AWS Athena',
-      subtitle: `This dataset contains purchase transaction information like the date, amount, merchant, type, and location. Combine with demographics to build profiles against spend. See Taxonomy for all available fields. Each record contains a standard userid which can be used to join demographics to various other datasets, such as receipts and demographics.`
-    },
-    {
-      type: 'Data Access',
-      route: 'Snowflake',
-      subtitle: `This dataset contains purchase transaction information like the date, amount, merchant, type, and location. Combine with demographics to build profiles against spend. See Taxonomy for all available fields. Each record contains a standard userid which can be used to join demographics to various other datasets, such as receipts and demographics.`
-    },
-    {
-      type: 'Data Access',
-      route: 'Apache Airflow',
-      subtitle: `This dataset contains purchase transaction information like the date, amount, merchant, type, and location. Combine with demographics to build profiles against spend. See Taxonomy for all available fields. Each record contains a standard userid which can be used to join demographics to various other datasets, such as receipts and demographics.`
-    },
-    {
-      type: 'Data Access',
-      route: 'Google BigQuery',
-      subtitle: `This dataset contains purchase transaction information like the date, amount, merchant, type, and location. Combine with demographics to build profiles against spend. See Taxonomy for all available fields. Each record contains a standard userid which can be used to join demographics to various other datasets, such as receipts and demographics.`
-    },
-    {
-      type: 'Data Access',
-      route: 'Apache Spark',
-      subtitle: `This dataset contains purchase transaction information like the date, amount, merchant, type, and location. Combine with demographics to build profiles against spend. See Taxonomy for all available fields. Each record contains a standard userid which can be used to join demographics to various other datasets, such as receipts and demographics.`
-    },
-    {
-      type: 'Data Access',
-      route: 'Databricks',
-      subtitle: `This dataset contains purchase transaction information like the date, amount, merchant, type, and location. Combine with demographics to build profiles against spend. See Taxonomy for all available fields. Each record contains a standard userid which can be used to join demographics to various other datasets, such as receipts and demographics.`
-    }
+  private dataAccessroutes: string[] = [
+    'Playground',
+    'AWS Athena',
+    'Snowflake',
+    'Apache Airflow',
+    'Google BigQuery',
+    'Apache Spark',
+    'Databricks'
   ]
-  private datasetsRoutes: Route[] = []
+  private datasetsRoutes: string[] = []
 
   public static getInstance(): Router {
     if (!Router.instance) {
@@ -75,7 +32,7 @@ export default class Router {
     return Router.instance
   }
 
-  public static getInitialRoute(): Route {
+  public static getInitialRoute(): string {
     const instance = Router.getInstance()
     return instance.myAccountRoutes[3]
   }
@@ -83,25 +40,9 @@ export default class Router {
   public static getRoutes(): MainRouter[] {
     const instance = Router.getInstance()
 
-    // do fetch to get datasets routes
+    // use fetch to get datasets routes
 
-    const datasetsRoutes: Route[] = [
-      {
-        type: 'Datasets',
-        route: 'Transactions',
-        subtitle: `This dataset contains purchase transaction information like the date, amount, merchant, type, and location. Combine with demographics to build profiles against spend. See Taxonomy for all available fields. Each record contains a standard userid which can be used to join demographics to various other datasets, such as receipts and demographics.`
-      },
-      {
-        type: 'Datasets',
-        route: 'Receipts',
-        subtitle: `This dataset contains purchase transaction information like the date, amount, merchant, type, and location. Combine with demographics to build profiles against spend. See Taxonomy for all available fields. Each record contains a standard userid which can be used to join demographics to various other datasets, such as receipts and demographics.`
-      },
-      {
-        type: 'Datasets',
-        route: 'Demographics',
-        subtitle: `This dataset contains purchase transaction information like the date, amount, merchant, type, and location. Combine with demographics to build profiles against spend. See Taxonomy for all available fields. Each record contains a standard userid which can be used to join demographics to various other datasets, such as receipts and demographics.`
-      }
-    ]
+    const datasetsRoutes: string[] = ['Transactions', 'Receipts', 'Demographics']
     instance.datasetsRoutes = datasetsRoutes
 
     const routes: MainRouter[] = [
@@ -122,3 +63,33 @@ export default class Router {
     return routes
   }
 }
+
+const routes = [
+  {
+    path: '/',
+    redirect: '/myAccount/legalCompliance',
+    children: []
+  },
+  {
+    path: '/myAccount',
+    name: 'my account',
+    children: [
+      {
+        path: 'legalCompliance',
+        name: 'legal compliance',
+        component: LegalComplianceScreen
+      }
+    ]
+  },
+  {
+    path: '/datasets/:name',
+    component: DatasetScreen,
+    name: 'datasets',
+    children: []
+  }
+]
+
+export const pluginRouter = createRouter({
+  history: createMemoryHistory(),
+  routes
+})
