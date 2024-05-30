@@ -42,6 +42,7 @@ const emit = defineEmits(['toggle'])
 
 .slot-container {
   margin-top: 1.5rem;
+  width: 100%;
 }
 
 @media (max-width: 1279px) {

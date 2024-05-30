@@ -2,6 +2,7 @@ import type { MainRouter } from './types/MainRouter'
 
 import LegalComplianceScreen from '@/LegalCompliance/LegalComplianceScreen.vue'
 import DatasetScreen from '@/Dataset/DatasetScreen.vue'
+import AccessKeysScreen from '@/AccessKeys/AccessKeysScreen.vue'
 
 import { createMemoryHistory, createRouter } from 'vue-router'
 
@@ -78,6 +79,11 @@ const routes = [
         path: 'legalCompliance',
         name: 'legal compliance',
         component: LegalComplianceScreen
+      },
+      {
+        path: 'accessKeys',
+        name: 'access keys',
+        component: AccessKeysScreen
       }
     ]
   },
