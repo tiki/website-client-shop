@@ -1,24 +1,21 @@
 <script setup lang="ts">
-import { reactive, ref } from 'vue'
+import { reactive } from 'vue'
 
-const key = '******8f028'
-const labels = ['Key', 'Label', 'Created', 'Last Used', '']
+const labels = ['Key', 'Domain', 'Created', '']
 
 const keys = reactive([
   {
     hashedKey: '******8f028',
     key: 'a8y901m8f028',
-    keyLabel: 'OAS Upload',
+    domain: 'OAS Upload',
     created: '7 months ago',
-    lastUse: '6 months agor',
     isHidden: true
   },
   {
     hashedKey: '******8f028',
     key: 'a8y901m8f028',
-    keyLabel: 'OAS Upload',
+    domain: 'OAS Upload',
     created: '7 months ago',
-    lastUse: '6 months ago',
     isHidden: true
   }
 ])
@@ -56,9 +53,8 @@ const copyToClipboard = (value: string) => {
           </button>
         </div>
       </span>
-      <span>{{ keyItem.keyLabel }}</span>
+      <span>{{ keyItem.domain }}</span>
       <span>{{ keyItem.created }}</span>
-      <span>{{ keyItem.lastUse }}</span>
       <span class="options-button">
         <button>
           <img src="../assets/three_dots_icons.svg" alt="" />
@@ -90,7 +86,7 @@ button {
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(4, 1fr);
 }
 
 .grid > span {
