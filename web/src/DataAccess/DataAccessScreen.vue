@@ -1,10 +1,12 @@
 <script setup lang="ts">
-import type { routeLocationKey } from 'vue-router'
-import type { LogarithmicScale } from 'chart.js'
 import ContentColumn from '../ContentColumn/ContentColumn.vue'
 import { useRoute } from 'vue-router'
+import MarkdownIt from "markdown-it";
+
+const markdown = new MarkdownIt();
 
 const route = useRoute()
+const markdownContent = `# ${route.name}`
 
 const title = `data access: ${route.name}`
 
@@ -13,7 +15,7 @@ const subtitle = `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pelle
 
 <template>
   <content-column :title="title" :subtitle="subtitle">
-    <h1>{{ $route.name }}</h1>
+    <div v-html="markdown.render(markdownContent)" />
   </content-column>
 </template>
 
