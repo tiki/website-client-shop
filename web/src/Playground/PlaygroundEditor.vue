@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
 import * as monaco from 'monaco-editor'
-import PlaygroundButtons from './PlaygroundButtons.vue';
-// import 'monaco-sql-languages/out/esm/trinosql/trinosql.contribution'
+import PlaygroundButtons from './PlaygroundButtons.vue'
+import PlaygroundResults from './PlaygroundResults.vue'
 
 let editorMonaco: monaco.editor.IStandaloneCodeEditor
 
@@ -52,6 +52,7 @@ const emits = defineEmits(['update'])
       <div id="editor" ref="editor" style="height: 15rem; width: 100%;"></div>
     </div>
     <playground-buttons />
+    <playground-results />
   </div>
 </template>
 

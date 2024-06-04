@@ -19,7 +19,7 @@
 }
 .button-row button {
   font-size: 1.2em;
-  padding: 0.35em 0.5em;
+  padding: 0.35em 1em;
   border-radius: 0.25em;
   cursor: pointer;
   font-size: 1em;
@@ -32,7 +32,7 @@
 }
 
 .clear-button{
-    border: none;
+    border: 1px solid black;
+    background: transparent;
 }
-
 </style>e
