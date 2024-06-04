@@ -4,6 +4,7 @@ import LegalComplianceScreen from '@/LegalCompliance/LegalComplianceScreen.vue'
 import DatasetScreen from '@/Dataset/DatasetScreen.vue'
 import AccessKeysScreen from '@/AccessKeys/AccessKeysScreen.vue'
 import DataAccessScreen from '@/DataAccess/DataAccessScreen.vue'
+import PlaygroundScreen from '@/Playground/PlaygroundScreen.vue'
 
 import { createMemoryHistory, createRouter } from 'vue-router'
 export default class Router {
@@ -97,6 +98,11 @@ const routes = [
     path: '/dataAccess',
     name: 'data access',
     children: [
+      {
+        path: 'playground',
+        name: 'playground',
+        component: PlaygroundScreen
+      },
       {
         path: 'awsAthena',
         name: 'aws athena',
