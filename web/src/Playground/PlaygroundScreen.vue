@@ -3,6 +3,7 @@ import ContentColumn from '../ContentColumn/ContentColumn.vue'
 import ThirdColumn from '../ThirdColumn/ThirdColumn.vue'
 import TableColumn from '../TableColumn/TableColumn.vue'
 import PlaygroundEditor from './PlaygroundEditor.vue'
+import TableSelection from './TableSelection.vue'
 
 import { useRoute } from 'vue-router'
 
@@ -18,7 +19,7 @@ const subtitle = `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pelle
     <playground-editor />
   </content-column>
   <third-column>
-    <table-column :table="'receipts'" />
+    <table-selection />
   </third-column>
 </template>
 
