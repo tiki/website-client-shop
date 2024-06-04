@@ -2,9 +2,10 @@ import type { MainRouter } from './types/MainRouter'
 
 import LegalComplianceScreen from '@/LegalCompliance/LegalComplianceScreen.vue'
 import DatasetScreen from '@/Dataset/DatasetScreen.vue'
+import AccessKeysScreen from '@/AccessKeys/AccessKeysScreen.vue'
+import DataAccessScreen from '@/DataAccess/DataAccessScreen.vue'
 
 import { createMemoryHistory, createRouter } from 'vue-router'
-
 export default class Router {
   private static instance: Router
 
@@ -16,7 +17,7 @@ export default class Router {
   ]
   private dataAccessroutes: string[] = [
     'Playground',
-    'AWS Athena',
+    'Aws Athena',
     'Snowflake',
     'Apache Airflow',
     'Google BigQuery',
@@ -78,6 +79,11 @@ const routes = [
         path: 'legalCompliance',
         name: 'legal compliance',
         component: LegalComplianceScreen
+      },
+      {
+        path: 'accessKeys',
+        name: 'access keys',
+        component: AccessKeysScreen
       }
     ]
   },
@@ -86,6 +92,42 @@ const routes = [
     component: DatasetScreen,
     name: 'datasets',
     children: []
+  },
+  {
+    path: '/dataAccess',
+    name: 'data access',
+    children: [
+      {
+        path: 'awsAthena',
+        name: 'aws athena',
+        component: DataAccessScreen
+      },
+      {
+        path: 'snowflake',
+        name: 'snowflake',
+        component: DataAccessScreen
+      },
+      {
+        path: 'apacheAirflow',
+        name: 'apache airflow',
+        component: DataAccessScreen
+      },
+      {
+        path: 'googleBigquery',
+        name: 'google bigquery',
+        component: DataAccessScreen
+      },
+      {
+        path: 'apacheSpark',
+        name: 'apache spark',
+        component: DataAccessScreen
+      },
+      {
+        path: 'databricks',
+        name: 'databricks',
+        component: DataAccessScreen
+      }
+    ]
   }
 ]
 
