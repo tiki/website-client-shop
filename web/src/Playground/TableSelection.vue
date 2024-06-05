@@ -23,8 +23,8 @@ const updateTable = (event: any) => {
 
 <template>
   <div class="table-selection-container">
-    <custom-select />
-    <custom-select />
+    <custom-select name="data source" :options="['Github', 'Ocean', 'Lake', 'Something']"/>
+    <custom-select name="database" :options="['Github', 'Ocean', 'Lake', 'Something']"/>
     <details>
       <summary>TABLES (3)</summary>
 
@@ -58,12 +58,9 @@ const updateTable = (event: any) => {
   gap: 1em;
 }
 
-details {
-  display: flex;
-  gap: 1em;
-  margin-top: 1em;
+summary {
+    margin: 0 0 0.5em 0;
 }
-
 li {
   display: flex;
   width: 100%;

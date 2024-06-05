@@ -1,35 +1,44 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 
-const options = ref<string[]>()
-
-options.value = ['Github', 'Ocean', 'Lake', 'Something']
+defineProps({
+  name: {
+    type: String,
+    required: true
+  },
+  options: {
+    type: Array<String>,
+    required: true
+  }
+})
 
 const optionSelected = ref<string>()
 </script>
 
 <template>
-  <label for="cleanroom">Database</label>
-  <select
-    name="cleanroom"
-    id="cleanroom"
-    v-model="optionSelected"
-    @change="$emit('changeCleanroom', optionSelected)"
-    onchange="this.dataset.chosen = 'chosen'"
-    class="text-tiki-gray/70"
-  >
-    <option value="undefined" disabled>Options</option>
-    <option
-      v-for="(option, index) in options"
-      :value="option"
-      :key="index"
+  <div>
+    <label for="cleanroom">{{ name }}</label>
+    <select
+      name="cleanroom"
+      id="cleanroom"
+      v-model="optionSelected"
+      @change="$emit('changeCleanroom', optionSelected)"
+      onchange="this.dataset.chosen = 'chosen'"
+      class="text-tiki-gray/70"
     >
-      {{ option }}
-    </option>
-  </select>
+      <option value="undefined" disabled>Select the {{ name }}</option>
+      <option v-for="(option, index) in options" :value="option" :key="index">
+        {{ option }}
+      </option>
+    </select>
+  </div>
 </template>
 
 <style scoped>
+label {
+  text-transform: capitalize;
+  font-size: 0.85em;
+}
 select {
   width: 100%;
   color: var(--secondary-text-color);
