@@ -26,14 +26,4 @@ const router: MainRouter[] = Router.getRoutes()
   padding: 0 1.125em;
 }
 
-@media (max-width: 1279px) {
-  .nav-column-container {
-    top: 0;
-    right: 0;
-    position: fixed;
-    margin-top: 0;
-    background-color: #fff;
-    overflow-y: scroll;
-  }
-}
 </style>
