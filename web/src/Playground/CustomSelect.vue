@@ -12,6 +12,8 @@ defineProps({
   }
 })
 
+defineEmits(['change'])
+
 const optionSelected = ref<string>()
 </script>
 
@@ -22,8 +24,7 @@ const optionSelected = ref<string>()
       name="cleanroom"
       id="cleanroom"
       v-model="optionSelected"
-      @change="$emit('changeCleanroom', optionSelected)"
-      onchange="this.dataset.chosen = 'chosen'"
+      @change="$emit('change', optionSelected)"
       class="text-tiki-gray/70"
     >
       <option value="undefined" disabled>Select the {{ name }}</option>
@@ -56,8 +57,5 @@ select {
   background-size:
     0.65em auto,
     100%;
-}
-#cleanroom[data-chosen='chosen'] {
-  color: #505c59;
 }
 </style>

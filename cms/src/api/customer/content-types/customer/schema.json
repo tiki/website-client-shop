@@ -28,6 +28,12 @@
       "relation": "oneToMany",
       "target": "api::legal-compliance.legal-compliance",
       "mappedBy": "customer"
+    },
+    "data_accesses": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::data-access.data-access",
+      "mappedBy": "customer"
     }
   }
 }
