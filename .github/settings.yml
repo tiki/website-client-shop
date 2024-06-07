@@ -42,5 +42,9 @@ milestones:
     state: closed
 
   - title: 0.0.4
-    description: Connect the CMS with Storefront and identify the customers through a JWT issued by TIKI.
+    description: Change the CMS structure and implement vue router in storefront.
+    state: closed
+  
+  - title: 0.0.5
+    description: Separate the CMS from the storefront.
     state: open
