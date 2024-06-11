@@ -39,12 +39,25 @@ export default class Router {
     return instance.myAccountRoutes[3]
   }
 
-  public static getRoutes(): MainRouter[] {
+  public static async getRoutes(): Promise<MainRouter[]> {
     const instance = Router.getInstance()
 
-    // use fetch to get datasets routes
+    const datasetsRoutes: string[] = []
+    const headers = new Headers()
+    headers.append(
+      'Authorization',
+      'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjbGllbnRfaWQiLCJhdWQiOiJteXRpa2kuY29tIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.C_xGCt8BsAUjfFm6dJ60VoMu1qyxu7LAzbe6bm0B7Rw'
+    )
+    const options = {
+      method: 'GET',
+      headers: headers
+    }
+    const response = await (await fetch(`${import.meta.env.VITE_API_URL}/datasets`, options)).json()
 
-    const datasetsRoutes: string[] = ['Transactions', 'Receipts', 'Demographics']
+    response.data.forEach((element: any) => {
+      datasetsRoutes.push(element.attributes.name)
+    })
+
     instance.datasetsRoutes = datasetsRoutes
 
     const routes: MainRouter[] = [
