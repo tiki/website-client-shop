@@ -15,17 +15,23 @@
     "name": {
       "type": "string"
     },
-    "trailInfo": {
-      "type": "json"
-    },
-    "agreements": {
-      "type": "json"
-    },
     "customer": {
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::customer.customer",
       "inversedBy": "legal_compliances"
+    },
+    "approved": {
+      "type": "boolean"
+    },
+    "link": {
+      "type": "string"
+    },
+    "records": {
+      "type": "biginteger"
+    },
+    "approved_for": {
+      "type": "json"
     }
   }
 }
