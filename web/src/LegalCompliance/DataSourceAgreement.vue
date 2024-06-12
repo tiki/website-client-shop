@@ -26,7 +26,7 @@ defineProps({
       </div>
       <div class="odd-div">{{ Number(dataset.attributes.records).toLocaleString() }} RECORDS</div>
       <span
-        ><a :href="dataset.attributes.link">
+        ><a :href="dataset.attributes.link" target="_blank">
           {{ dataset.attributes.name }}
         </a></span
       >

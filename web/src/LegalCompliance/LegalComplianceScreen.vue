@@ -22,8 +22,6 @@ onMounted(async () => {
     await fetch(`${import.meta.env.VITE_API_URL}/legal-compliances`, options)
   ).json()
 
-
-  console.log(content.value)
 })
 
 const subtitle =
@@ -33,7 +31,7 @@ const subtitle =
 <template>
   <div id="legal-compliance-screen" v-if="content">
     <content-column :title="'my account: legal compliance'" :subtitle="subtitle">
-      <legal-compliance-content />
+      <legal-compliance-content :content="content"/>
     </content-column>
     <third-column>
       <DataSourceAgreement :agreements="content"/>
