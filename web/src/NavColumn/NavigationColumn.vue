@@ -1,17 +1,12 @@
 <script setup lang="ts">
 import NavSection from './NavSection.vue'
 import NavHeader from './NavHeader.vue'
-import { type MainRouter } from '@/router/types/MainRouter'
-import Router from '../router/router'
-
-const router: MainRouter[] = Router.getRoutes()
-
 </script>
 
 <template>
   <div class="nav-column-container">
     <nav-header />
-    <nav-section :nav-list="router"/>
+    <nav-section />
   </div>
 </template>
 
@@ -25,5 +20,4 @@ const router: MainRouter[] = Router.getRoutes()
   margin-top: 1.125em;
   padding: 0 1.125em;
 }
-
 </style>

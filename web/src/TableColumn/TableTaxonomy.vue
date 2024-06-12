@@ -1,30 +1,26 @@
 <script setup lang="ts">
-import { demographics, transactions, receipts } from './Tables'
+import type { PropType } from 'vue';
+import type { Taxonomy } from '@/Dataset/types/DatasetResponse';
 
-const props = defineProps({
+defineProps({
   table: {
     type: String,
+    required: true
+  },
+  taxonomy: {
+    type: Object as PropType<Taxonomy>,
     required: true
   }
 })
 
-const checkTable = () => {
-  switch (props.table!.toLowerCase()) {
-    case 'demographics':
-      return demographics
-    case 'receipts':
-      return receipts
-    case 'transactions':
-      return transactions
-  }
-}
+
 </script>
 
 <template>
   <div class="table-taxonomy-container">
     <h2>TAXONOMY</h2>
     <ul>
-      <li v-for="data of checkTable()" :key="data.data">
+      <li v-for="data of taxonomy[table]" :key="data.data">
         <div class="table-cell-container">
           <span class="table-cell-type">
             {{ data.data }}
@@ -32,7 +28,7 @@ const checkTable = () => {
           <span class="table-cell-type">{{ data.type }}</span>
         </div>
         <span class="table-cell-description"
-          >Table Description: Transaction Category Level 1: SHOPS</span
+          >{{ data.description }}</span
         >
       </li>
     </ul>

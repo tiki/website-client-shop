@@ -1,21 +1,39 @@
 <script setup lang="ts">
 import ContentColumn from '../ContentColumn/ContentColumn.vue'
 import { useRoute } from 'vue-router'
-import MarkdownIt from "markdown-it";
+import { onMounted, ref } from 'vue'
+import MarkdownIt from 'markdown-it'
+import { type DataAccessRsp, type Attributes, type DataAccess } from './types/DataAccessRsp'
 
-const markdown = new MarkdownIt();
+const markdown = new MarkdownIt()
 
 const route = useRoute()
-const markdownContent = `# ${route.name}`
 
-const title = `data access: ${route.name}`
+const title = `data access: ${String(route.name)}`
 
-const subtitle = `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque lacinia euismod eros id vehicula. Quisque elementum velit tincidunt nisi viverra aliquet. Donec vel mi eget dui aliquet sodales. Etiam pharetra, lacus in tempus porttitor, felis lorem dapibus neque, id imperdiet mauris tortor maximus nisl. Nullam rhoncus ut ex ornare tempus. Nunc auctor justo id tincidunt eleifend. Phasellus nulla justo, efficitur ut sapien sed, porttitor vehicula sem.`
+const content = ref<Attributes | null>()
+
+onMounted(async () => {
+  const headers = new Headers()
+  headers.append(
+    'Authorization',
+    'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjbGllbnRfaWQiLCJhdWQiOiJteXRpa2kuY29tIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.C_xGCt8BsAUjfFm6dJ60VoMu1qyxu7LAzbe6bm0B7Rw'
+  )
+  const options = {
+    method: 'GET',
+    headers: headers
+  }
+  const response: DataAccessRsp = await (
+    await fetch(`${import.meta.env.VITE_API_URL}/data-accesses`, options)
+  ).json()
+
+  content.value = response.data.find((el: DataAccess) => el.attributes.name === route.name)
+})
 </script>
 
 <template>
-  <content-column :title="title" :subtitle="subtitle">
-    <div v-html="markdown.render(markdownContent)" />
+  <content-column :title="title" :subtitle="content.attributes.description" v-if="content">
+    <div v-html="markdown.render(content.attributes.content)" />
   </content-column>
 </template>
 

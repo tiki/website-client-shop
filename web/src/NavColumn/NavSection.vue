@@ -1,15 +1,14 @@
 <script setup lang="ts">
-import { type PropType, ref } from 'vue'
-import { type MainRouter } from '@/router/types/MainRouter'
-import Router from '../router/router'
 import { useRouter } from 'vue-router'
 import camelize from '@/utils/camelize'
+import { type MainRouter } from '@/router/types/MainRouter'
+import Router from '../router/router'
+import { onBeforeMount, ref } from 'vue'
 
-defineProps({
-  navList: {
-    required: true,
-    type: Object as PropType<MainRouter[]>
-  }
+const navList = ref<MainRouter[]>()
+
+onBeforeMount(async () => {
+  navList.value = await Router.getRoutes()
 })
 
 const router = useRouter()
