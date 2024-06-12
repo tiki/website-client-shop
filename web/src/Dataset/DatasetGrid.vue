@@ -9,10 +9,6 @@ import type { Attributes } from '@/Dataset/types/DatasetResponse';
 
 
 const props = defineProps({
-  table: {
-    type: String,
-    required: true
-  },
   datasetAttributes: {
     type: Object as PropType<Attributes>,
     required: true

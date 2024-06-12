@@ -5,7 +5,7 @@ import TableColumn from '../TableColumn/TableColumn.vue'
 import DatasetGrid from './DatasetGrid.vue'
 import { useRoute } from 'vue-router'
 import { onMounted, ref } from 'vue'
-import { type DatasetResponse, type Attributes } from './types/DatasetResponse'
+import { type DatasetResponse, type Attributes, type Data } from './types/DatasetResponse'
 
 const route = useRoute()
 
@@ -26,7 +26,7 @@ onMounted(async () => {
   const response: DatasetResponse = await (
     await fetch(`${import.meta.env.VITE_API_URL}/datasets`, options)
   ).json()
-  const dataset = response.data.find((el: any) => {
+  const dataset = response.data.find((el: Data) => {
     return el.attributes.name.toLowerCase() === route.params.name
   })
 
