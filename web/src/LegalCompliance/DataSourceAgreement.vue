@@ -1,31 +1,15 @@
 <script setup lang="ts">
 import type { PropType } from 'vue'
-import type DataSourceAgreementType from './types/DataSourceAgreementType'
+import { type LegalComplianceRsp } from './types/LegalComplianceRsp'
 
-//fetch data
-const dataSourcesAgreements: DataSourceAgreementType[] = [
-  {
-    records: '3,103,398 RECORDS',
-    agreement: {
-      name: 'APP 1',
-      link: ''
-    }
-  },
-  {
-    records: '3,103,398 RECORDS',
-    agreement: {
-      name: 'APP 2',
-      link: ''
-    }
-  },
-  {
-    records: '3,103,398 RECORDS',
-    agreement: {
-      name: 'COMPANY.COM',
-      link: ''
-    }
+
+defineProps({
+  agreements: {
+    type: Object as PropType<LegalComplianceRsp>,
+    required: true
   }
-]
+})
+
 </script>
 
 <template>
@@ -33,17 +17,17 @@ const dataSourcesAgreements: DataSourceAgreementType[] = [
     <h1>DATA SOURCE AGREEMENTS</h1>
     <div
       class="agreement-checkbox-container"
-      v-for="dataset in dataSourcesAgreements"
-      :key="dataset.agreement.name"
+      v-for="dataset in agreements.data"
+      :key="dataset.id"
     >
       <div class="checkbox-container">
-        <input type="checkbox" :id="`${dataset.agreement.name}`" @click="console.log('test')" />
-        <label :for="`${dataset.agreement.name}`"></label>
+        <input type="checkbox" :id="`${dataset.attributes.name}`" @click="console.log('test')" />
+        <label :for="`${dataset.attributes.name}`"></label>
       </div>
-      <div class="odd-div">{{ dataset.records }}</div>
+      <div class="odd-div">{{ Number(dataset.attributes.records).toLocaleString() }} RECORDS</div>
       <span
-        ><a :href="dataset.agreement.link">
-          {{ dataset.agreement.name }}
+        ><a :href="dataset.attributes.link" target="_blank">
+          {{ dataset.attributes.name }}
         </a></span
       >
     </div>

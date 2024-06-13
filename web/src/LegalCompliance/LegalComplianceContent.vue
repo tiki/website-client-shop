@@ -4,49 +4,78 @@ import AuditTrail from './AuditTrail.vue'
 import ChartComponent from './ChartComponent.vue'
 import type TrailInfo from './types/TrailInfo'
 
+import type { PropType } from 'vue'
+import { type LegalComplianceRsp, type LegalComplianceData } from './types/LegalComplianceRsp'
+
+const props = defineProps({
+  content: {
+    type: Object as PropType<LegalComplianceRsp>,
+    required: true
+  }
+})
+
 const accentColor = getComputedStyle(document.body).getPropertyValue('--accent-color')
 
-const trailInfo: TrailInfo[] = [
-  {
-    date: 'JAN. 03, 2024',
-    approved: true,
-    agreement: 'APP 1'
-  },
-  {
-    date: 'FEB. 17, 2024',
-    approved: true,
-    agreement: 'APP 2'
-  },
-  {
-    date: 'FEB. 17, 2024',
-    approved: true,
-    agreement: 'COMPANY.COM'
-  },
-  {
-    date: 'MAR. 05, 2024',
-    approved: false,
-    agreement: 'APP 2'
+const trailInfo: TrailInfo[] = props.content.data.map((el: LegalComplianceData) => {
+  return {
+    date: el.attributes.publishedAt,
+    approved: el.attributes.approved,
+    agreement: el.attributes.name
   }
-]
+})
+
+function calculatePercentages(arr: number[]): number[] {
+  const total = arr.reduce((acc, val) => acc + val, 0)
+  return arr.map((val) => (val / total) * 100)
+}
+
+const chartsDatasetsValue = props.content.data.map((el: LegalComplianceData) =>
+  Number(el.attributes.records)
+)
+const dataSourcesPercentages = calculatePercentages(chartsDatasetsValue)
+
+const dataSourcesColors = dataSourcesPercentages.map((el) => accentColor + el.toFixed(0))
 
 const dataSourceChartData: ChartData = {
-  labels: ['App 1', 'App 2', 'Stripe', 'Hubspot'],
+  labels: props.content.data.map((el: LegalComplianceData) => el.attributes.name),
   datasets: [
     {
-      data: [90, 52, 36, 10],
-      label: '',
-      backgroundColor: [68, 52, 36, 20].map((el) => accentColor + el)
+      data: chartsDatasetsValue,
+      label: 'Records',
+      backgroundColor: dataSourcesColors
     }
   ]
 }
 
+const approvedForArray = props.content.data.flatMap(
+  (el: LegalComplianceData) => el.attributes.approved_for.approved_for
+)
+
+const approvedForCountMap = approvedForArray.reduce(
+  (acc: Record<string, number>, approvedFor: string) => {
+    acc[approvedFor] = (acc[approvedFor] || 0) + 1
+    return acc
+  },
+  {}
+)
+
+const uniqueApprovedForArray = [...new Set(approvedForArray)]
+
+const approvedForCountArray = uniqueApprovedForArray.map(
+  (approvedFor) => approvedForCountMap[approvedFor]
+)
+
+const approvedPercentages = calculatePercentages(approvedForCountArray)
+
+const approvedColors = approvedPercentages.map((el) => accentColor + el.toFixed(0))
+
 const approvedChartData: ChartData = {
-  labels: ['ANALYTICS', 'AI TRAINING', 'ADVERTISING', 'ATTRIBUTION'],
+  labels: uniqueApprovedForArray,
   datasets: [
     {
-      data: [68, 52, 36, 20],
+      data: approvedForCountArray,
       label: '',
-      backgroundColor: [68, 52, 36, 20].map((el) => accentColor + el)
+      backgroundColor: approvedColors
     }
   ]
 }

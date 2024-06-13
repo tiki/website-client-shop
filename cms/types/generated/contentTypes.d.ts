@@ -362,6 +362,175 @@ export interface AdminTransferTokenPermission extends Schema.CollectionType {
   };
 }
 
+export interface ApiCustomerCustomer extends Schema.CollectionType {
+  collectionName: 'customers';
+  info: {
+    singularName: 'customer';
+    pluralName: 'customers';
+    displayName: 'Customer';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String;
+    domain: Attribute.String;
+    datasets: Attribute.Relation<
+      'api::customer.customer',
+      'oneToMany',
+      'api::dataset.dataset'
+    >;
+    legal_compliances: Attribute.Relation<
+      'api::customer.customer',
+      'oneToMany',
+      'api::legal-compliance.legal-compliance'
+    >;
+    data_accesses: Attribute.Relation<
+      'api::customer.customer',
+      'oneToMany',
+      'api::data-access.data-access'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::customer.customer',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::customer.customer',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiDataAccessDataAccess extends Schema.CollectionType {
+  collectionName: 'data_accesses';
+  info: {
+    singularName: 'data-access';
+    pluralName: 'data-accesses';
+    displayName: 'DataAccess';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String;
+    description: Attribute.Text;
+    content: Attribute.RichText;
+    customer: Attribute.Relation<
+      'api::data-access.data-access',
+      'manyToOne',
+      'api::customer.customer'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::data-access.data-access',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::data-access.data-access',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiDatasetDataset extends Schema.CollectionType {
+  collectionName: 'datasets';
+  info: {
+    singularName: 'dataset';
+    pluralName: 'datasets';
+    displayName: 'Dataset';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String;
+    description: Attribute.Text;
+    stats: Attribute.JSON;
+    charts: Attribute.JSON;
+    taxonomy: Attribute.JSON;
+    customer: Attribute.Relation<
+      'api::dataset.dataset',
+      'manyToOne',
+      'api::customer.customer'
+    >;
+    legal_compliance: Attribute.Relation<
+      'api::dataset.dataset',
+      'oneToOne',
+      'api::legal-compliance.legal-compliance'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::dataset.dataset',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::dataset.dataset',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiLegalComplianceLegalCompliance
+  extends Schema.CollectionType {
+  collectionName: 'legal_compliances';
+  info: {
+    singularName: 'legal-compliance';
+    pluralName: 'legal-compliances';
+    displayName: 'legalCompliance';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String;
+    customer: Attribute.Relation<
+      'api::legal-compliance.legal-compliance',
+      'manyToOne',
+      'api::customer.customer'
+    >;
+    approved: Attribute.Boolean;
+    link: Attribute.String;
+    records: Attribute.BigInteger;
+    approved_for: Attribute.JSON;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::legal-compliance.legal-compliance',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::legal-compliance.legal-compliance',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface PluginUploadFile extends Schema.CollectionType {
   collectionName: 'files';
   info: {
@@ -787,173 +956,6 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
-export interface ApiCustomerCustomer extends Schema.CollectionType {
-  collectionName: 'customers';
-  info: {
-    singularName: 'customer';
-    pluralName: 'customers';
-    displayName: 'Customer';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    name: Attribute.String;
-    domain: Attribute.String;
-    datasets: Attribute.Relation<
-      'api::customer.customer',
-      'oneToMany',
-      'api::dataset.dataset'
-    >;
-    legal_compliances: Attribute.Relation<
-      'api::customer.customer',
-      'oneToMany',
-      'api::legal-compliance.legal-compliance'
-    >;
-    data_accesses: Attribute.Relation<
-      'api::customer.customer',
-      'oneToMany',
-      'api::data-access.data-access'
-    >;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::customer.customer',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::customer.customer',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiDataAccessDataAccess extends Schema.CollectionType {
-  collectionName: 'data_accesses';
-  info: {
-    singularName: 'data-access';
-    pluralName: 'data-accesses';
-    displayName: 'DataAccess';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    name: Attribute.String;
-    description: Attribute.Text;
-    content: Attribute.RichText;
-    customer: Attribute.Relation<
-      'api::data-access.data-access',
-      'manyToOne',
-      'api::customer.customer'
-    >;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::data-access.data-access',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::data-access.data-access',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiDatasetDataset extends Schema.CollectionType {
-  collectionName: 'datasets';
-  info: {
-    singularName: 'dataset';
-    pluralName: 'datasets';
-    displayName: 'Dataset';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    name: Attribute.String;
-    description: Attribute.Text;
-    stats: Attribute.JSON;
-    charts: Attribute.JSON;
-    taxonomy: Attribute.JSON;
-    customer: Attribute.Relation<
-      'api::dataset.dataset',
-      'manyToOne',
-      'api::customer.customer'
-    >;
-    legal_compliance: Attribute.Relation<
-      'api::dataset.dataset',
-      'oneToOne',
-      'api::legal-compliance.legal-compliance'
-    >;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::dataset.dataset',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::dataset.dataset',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiLegalComplianceLegalCompliance
-  extends Schema.CollectionType {
-  collectionName: 'legal_compliances';
-  info: {
-    singularName: 'legal-compliance';
-    pluralName: 'legal-compliances';
-    displayName: 'legalCompliance';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    name: Attribute.String;
-    trailInfo: Attribute.JSON;
-    agreements: Attribute.JSON;
-    customer: Attribute.Relation<
-      'api::legal-compliance.legal-compliance',
-      'manyToOne',
-      'api::customer.customer'
-    >;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::legal-compliance.legal-compliance',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::legal-compliance.legal-compliance',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -964,6 +966,10 @@ declare module '@strapi/types' {
       'admin::api-token-permission': AdminApiTokenPermission;
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
+      'api::customer.customer': ApiCustomerCustomer;
+      'api::data-access.data-access': ApiDataAccessDataAccess;
+      'api::dataset.dataset': ApiDatasetDataset;
+      'api::legal-compliance.legal-compliance': ApiLegalComplianceLegalCompliance;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::content-releases.release': PluginContentReleasesRelease;
@@ -972,10 +978,6 @@ declare module '@strapi/types' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
-      'api::customer.customer': ApiCustomerCustomer;
-      'api::data-access.data-access': ApiDataAccessDataAccess;
-      'api::dataset.dataset': ApiDatasetDataset;
-      'api::legal-compliance.legal-compliance': ApiLegalComplianceLegalCompliance;
     }
   }
 }
