@@ -11,7 +11,7 @@ const route = useRoute()
 
 const title = `data access: ${String(route.name)}`
 
-const content = ref<Attributes | null>()
+const content = ref<DataAccess>()
 
 onMounted(async () => {
   const headers = new Headers()

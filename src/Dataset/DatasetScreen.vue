@@ -34,6 +34,8 @@ onMounted(async () => {
 
 })
 
+
+const table: string | string[] = route.params.name
 </script>
 
 <template>
@@ -42,7 +44,7 @@ onMounted(async () => {
       <dataset-grid :dataset-attributes="datasetAttributes"/>
     </content-column>
     <third-column>
-      <table-column :table="$route.params.name" :dataset-attributes="datasetAttributes"/>
+      <table-column :table="table" :dataset-attributes="datasetAttributes"/>
     </third-column>
   </div>
   </template>

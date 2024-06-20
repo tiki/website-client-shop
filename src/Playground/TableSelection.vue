@@ -16,9 +16,9 @@ const checkTable = (table: string) => {
   }
 }
 
-const updateTable = (event: any) => {
-  if (event.newState === 'open') emit('update', `tiki.${event.srcElement.id}`)
-}
+// const updateTable = (event: any) => {
+//   if (event.newState === 'open') emit('update', `tiki.${event.srcElement.id}`)
+// }
 </script>
 
 <template>
@@ -28,7 +28,7 @@ const updateTable = (event: any) => {
     <details>
       <summary>TABLES (3)</summary>
 
-      <details v-for="table in tables" :id="table" :key="table" @toggle="updateTable">
+      <details v-for="table in tables" :id="table" :key="table">
         <summary>
           {{ table }}
           <span></span>
