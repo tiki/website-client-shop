@@ -35,7 +35,7 @@ onMounted(async () => {
 })
 
 
-const table: string | string[] = route.params.name
+const table: string = route.params.name[0]
 </script>
 
 <template>
