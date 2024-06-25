@@ -15,7 +15,7 @@ const props = defineProps({
   }
 })
 
-const chartsData: ChartData[][] = props.datasetAttributes.charts.charts
+const chartsData: ChartData[][] = props.datasetAttributes.charts
 
 onMounted(() => {
   ChartService.renderDatasetScreenChart(

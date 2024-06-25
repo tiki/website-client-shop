@@ -13,14 +13,13 @@ defineProps({
   }
 })
 
-
 </script>
 
 <template>
   <div class="table-taxonomy-container">
     <h2>TAXONOMY</h2>
     <ul>
-      <li v-for="data of taxonomy[table]" :key="data.data">
+      <li v-for="data of taxonomy[table.toLowerCase()]" :key="data.data">
         <div class="table-cell-container">
           <span class="table-cell-type">
             {{ data.data }}
