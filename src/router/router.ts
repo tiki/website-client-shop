@@ -11,8 +11,6 @@ export default class Router {
   private static instance: Router
 
   private myAccountRoutes: string[] = [
-    'Organization',
-    'Billing and Usage',
     'Access Keys',
     'Legal Compliance'
   ]
