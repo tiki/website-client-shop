@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import ContentColumn from '../ContentColumn/ContentColumn.vue'
 import ThirdColumn from '../ThirdColumn/ThirdColumn.vue'
-import TableColumn from '../TableColumn/TableColumn.vue'
 import PlaygroundEditor from './PlaygroundEditor.vue'
 import TableSelection from './TableSelection.vue'
 
