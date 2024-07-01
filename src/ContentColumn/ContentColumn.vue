@@ -44,11 +44,4 @@ const emit = defineEmits(['toggle'])
   margin-top: 1.5rem;
   width: 100%;
 }
-
-@media (max-width: 1279px) {
-  .content-column-container {
-    width: 100%;
-    height: auto;
-  }
-}
 </style>

@@ -16,7 +16,7 @@ import NavHeader from './NavHeader.vue'
   border-right: 1px solid #00000010;
   display: flex;
   flex-direction: column;
-  width: 175px;
+  width: 250px;
   margin-top: 1.125em;
   padding: 0 1.125em;
 }

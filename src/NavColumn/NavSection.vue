@@ -4,11 +4,24 @@ import camelize from '@/utils/camelize'
 import { type MainRouter } from '@/router/types/MainRouter'
 import Router from '../router/router'
 import { onBeforeMount, ref } from 'vue'
+import Menu from 'primevue/menu'
 
 const navList = ref<MainRouter[]>()
 
+const items = ref()
+
 onBeforeMount(async () => {
   navList.value = await Router.getRoutes()
+  items.value = navList.value.map((item) => ({
+    label: item.sectionName.charAt(0).toUpperCase() + item.sectionName.slice(1), // Capitalizing the first letter
+    items: item.navList.map((navItem) => ({
+      label: navItem,
+      command: () => {
+        handleRouting(navItem,item.sectionName)
+      }
+    })),
+  }
+  ))
 })
 
 const router = useRouter()
@@ -23,22 +36,20 @@ const handleRouting = (route: string, section: string) => {
 </script>
 
 <template>
-  <div v-for="section in navList">
-    <p>{{ section.sectionName }}</p>
-    <ul>
-      <li
-        v-for="route in section.navList"
-        :key="route"
-        @click="handleRouting(route, section.sectionName)"
-        :class="route === selectedRoute ? 'selected-route' : ''"
-      >
-        {{ route }}
-      </li>
-    </ul>
+  <div class="card flex justify-center">
+    <Menu :model="items" :command="(evt:any)=>console.log('test', evt)"/>
   </div>
 </template>
 
 <style scoped>
+.nav-menu {
+  display: flex;
+  gap: 5em;
+}
+
+.nav-span {
+  cursor: pointer;
+}
 p {
   font-weight: 700;
   font-size: 0.6875em;

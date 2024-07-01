@@ -3,9 +3,9 @@ import DatasetStats from './DatasetStats.vue'
 import { onMounted, type PropType } from 'vue'
 import ChartService from '../ChartService/index'
 import { type ChartData } from '../ChartService/types/Chart'
-import CustomButton from '../CustomButton/CustomButton.vue'
-import { ButtonState } from '../CustomButton/ButtonState'
 import type { Attributes } from '@/Dataset/types/DatasetResponse';
+import Button from 'primevue/button';
+
 
 
 const props = defineProps({
@@ -32,8 +32,8 @@ onMounted(() => {
     <div id="first-chart-container">
       <div id="chart-button-container"></div>
       <div class="button-container">
-        <custom-button :button-text="'View Sample'" :state="ButtonState.FILLED" />
-        <custom-button :button-text="'Compliance Report'" :state="ButtonState.OUTLINED" />
+        <Button label="View Sample" severity="success" class="w-44"/>
+        <Button label="Compliance Report" severity="contrast" outlined class="w-44"/>
       </div>
     </div>
   </div>
