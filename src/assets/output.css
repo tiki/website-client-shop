@@ -623,6 +623,26 @@ video {
     display: none;
   }
 
+  .w-4{
+    width: 1rem;
+  }
+
+  .w-16{
+    width: 4rem;
+  }
+
+  .w-32{
+    width: 8rem;
+  }
+
+  .w-40{
+    width: 10rem;
+  }
+
+  .w-44{
+    width: 11rem;
+  }
+
   .border-collapse{
     border-collapse: collapse;
   }

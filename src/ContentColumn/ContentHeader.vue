@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import MenuIcon from '../Icons/MenuIcon.vue'
-import { ref } from 'vue'
 
 defineProps({
   title: {

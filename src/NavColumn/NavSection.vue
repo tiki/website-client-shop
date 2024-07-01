@@ -17,7 +17,6 @@ onBeforeMount(async () => {
     items: item.navList.map((navItem) => ({
       label: navItem,
       command: () => {
-        console.log(item, navItem)
         handleRouting(navItem,item.sectionName)
       }
     })),
@@ -40,20 +39,6 @@ const handleRouting = (route: string, section: string) => {
   <div class="card flex justify-center">
     <Menu :model="items" :command="(evt:any)=>console.log('test', evt)"/>
   </div>
-
-  <!-- <div v-for="section in navList">
-    <p>{{ section.sectionName }}</p>
-    <ul>
-      <li
-        v-for="route in section.navList"
-        :key="route"
-        @click="handleRouting(route, section.sectionName)"
-        :class="route === selectedRoute ? 'selected-route' : ''"
-      >
-        {{ route }}
-      </li>
-    </ul>
-  </div> -->
 </template>
 
 <style scoped>
