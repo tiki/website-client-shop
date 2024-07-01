@@ -1,0 +1,20 @@
+version = 0.1
+
+[default.global.parameters]
+stack_name = "mytiki-storefront-hosting"
+s3_bucket = "mytiki-sam-deploy-sandbox-ricardo-us-east-2"
+s3_prefix = "storefront/hosting"
+region = "us-east-1"
+template_file = "out/template.yml"
+
+[default.deploy.parameters]
+confirm_changeset = false
+capabilities = [
+    "CAPABILITY_AUTO_EXPAND",
+    "CAPABILITY_NAMED_IAM",
+]
+
+parameter_overrides = [
+  "DNSZone=Z09413743UY2G8UHP9J3G",
+  "HostName=storefront.ricardo.mytiki.com"
+]
