@@ -1,52 +1,80 @@
 <script setup lang="ts">
+import { ref } from 'vue'
 import { demographics, transactions, receipts } from '../TableColumn/Tables'
-import CustomSelect from './CustomSelect.vue';
-
-const tables = ['demographics', 'receipts', 'transactions']
+import Select from 'primevue/select'
+import Tree from 'primevue/tree'
 
 const emit = defineEmits(['insert', 'update'])
-const checkTable = (table: string) => {
-  switch (table) {
-    case 'demographics':
-      return demographics
-    case 'receipts':
-      return receipts
-    case 'transactions':
-      return transactions
-  }
-}
 
-// const updateTable = (event: any) => {
-//   if (event.newState === 'open') emit('update', `tiki.${event.srcElement.id}`)
-// }
+
+
+const cities = ref([
+  { name: 'New York', code: 'NY' },
+  { name: 'Rome', code: 'RM' },
+  { name: 'London', code: 'LDN' },
+  { name: 'Istanbul', code: 'IST' },
+  { name: 'Paris', code: 'PRS' }
+])
+
+const selectedDataSource = ref<string>()
+const selectedTable = ref<string>()
+
+const dataHierarchy = [
+  {
+    key: '0',
+    label: 'Transactions',
+    data: 'Transactions Folder',
+    children: transactions.map((item, index) => ({
+      key: `0-${index}`,
+      label: `${item.data} (${item.type})`,
+      data: `${item.data} (${item.type})`,
+    }))
+  },
+  {
+    key: '1',
+    label: 'Demographics',
+    data: 'Demographics Folder',
+    children: demographics.map((item, index) => ({
+      key: `1-${index}`,
+      label: `${item.data} (${item.type})`,
+      data: `${item.data} (${item.type})`,
+    }))
+  },
+  {
+    key: '2',
+    label: 'Receipts',
+    data: 'Receipts Folder',
+    children: receipts.map((item, index) => ({
+      key: `2-${index}`,
+      label: `${item.data} (${item.type})`,
+      data: `${item.data} (${item.type})`,
+    }))
+  }
+]
+
 </script>
 
 <template>
   <div class="table-selection-container">
-    <custom-select name="data source" :options="['Github', 'Ocean', 'Lake', 'Something']"/>
-    <custom-select name="database" :options="['Github', 'Ocean', 'Lake', 'Something']"/>
-    <details>
-      <summary>TABLES (3)</summary>
+    <label for="cleanroom">Data Source</label>
+    <Select
+      v-model="selectedDataSource"
+      :options="cities"
+      optionLabel="name"
+      placeholder="Select a Data Source"
+      class="w-full md:w-56"
+    />
+    <label for="cleanroom">Table</label>
+    <Select
+      v-model="selectedTable"
+      :options="cities"
+      optionLabel="name"
+      placeholder="Select a Table"
+      class="w-full md:w-56"
+    />
 
-      <details v-for="table in tables" :id="table" :key="table">
-        <summary>
-          {{ table }}
-          <span></span>
-        </summary>
-        <ul>
-          <li
-            v-for="data of checkTable(table)"
-            :key="data.data"
-            @dblclick="$emit('insert', data.data)"
-          >
-            <span>
-              {{ data.data }}
-            </span>
-            <span>{{ data.type }}</span>
-          </li>
-        </ul>
-      </details>
-    </details>
+    <h1 class="text-xl ">Tables (3)</h1>
+    <Tree :value="dataHierarchy" class="w-full md:w-[30rem]" pt:root:style="padding: 0;"></Tree>
   </div>
 </template>
 
@@ -59,7 +87,7 @@ const checkTable = (table: string) => {
 }
 
 summary {
-    margin: 0 0 0.5em 0;
+  margin: 0 0 0.5em 0;
 }
 li {
   display: flex;
@@ -70,16 +98,15 @@ li {
   font-size: 0.8em;
 }
 
-ul{
-    display: flex;
-    flex-direction: column;
-    gap: 0.5em;
-    padding: 0.875em;
+ul {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+  padding: 0.875em;
 }
 
 /* details summary::-webkit-details-marker,
 details summary::marker {
   display: none;
 } */
-
 </style>
