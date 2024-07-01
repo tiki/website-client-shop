@@ -14,17 +14,12 @@ defineProps({
 })
 
 const emit = defineEmits(['toggle'])
-
-const width = ref<number>(window.outerWidth)
 </script>
 
 <template>
   <div class="container">
     <div class="title-button-container">
       <h1>{{ title }}</h1>
-      <button class="menu-button" @click="$emit('toggle')" v-if="width < 1280">
-        <menu-icon />
-      </button>
     </div>
     <h2>
       {{ subtitle }}

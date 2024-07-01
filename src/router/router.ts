@@ -2,7 +2,6 @@ import type { MainRouter } from './types/MainRouter'
 
 import LegalComplianceScreen from '@/LegalCompliance/LegalComplianceScreen.vue'
 import DatasetScreen from '@/Dataset/DatasetScreen.vue'
-import AccessKeysScreen from '@/AccessKeys/AccessKeysScreen.vue'
 import DataAccessScreen from '@/DataAccess/DataAccessScreen.vue'
 import PlaygroundScreen from '@/Playground/PlaygroundScreen.vue'
 
@@ -11,7 +10,6 @@ export default class Router {
   private static instance: Router
 
   private myAccountRoutes: string[] = [
-    'Access Keys',
     'Legal Compliance'
   ]
   private dataAccessroutes: string[] = [
@@ -92,11 +90,6 @@ const routes = [
         name: 'legal compliance',
         component: LegalComplianceScreen
       },
-      {
-        path: 'accessKeys',
-        name: 'access keys',
-        component: AccessKeysScreen
-      }
     ]
   },
   {
