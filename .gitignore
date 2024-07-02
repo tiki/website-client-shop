@@ -30,3 +30,7 @@ coverage
 *.tsbuildinfo
 
 .env
+
+#infra
+infra/.aws-sam
+infra/out
